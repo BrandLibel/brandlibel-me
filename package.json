@@ -11,12 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://BrandonLi4593@bitbucket.org/BrandonLi4593/brandlibel-me-react.git"
+    "url": "https://github.com/BrandLibel/brandlibel-me"
   },
   "author": "Brandon Li",
   "license": "BSD-4-Clause",
   "homepage": "https://brandlibel.me",
   "dependencies": {
+    "copy-webpack-plugin": "^6.0.2",
     "css-loader": "^3.3.0",
     "express": "^4.17.1",
     "react": "^16.12.0",
