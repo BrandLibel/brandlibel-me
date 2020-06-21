@@ -10,8 +10,11 @@ html {
     --color-box-green: #00ce00;
     --color-box-green-dark: #00B500;
 
-    --color-box-orange: #ff6900;
-    --color-box-orange-dark: #D95A00;
+    --color-box-orange: #E86100;
+    --color-box-orange-dark: #C25100;
+
+    --color-box-red: #CF0000;
+    --color-box-red-dark: #A80000;
 
     --color-header: #3D3C38;
     font-size: 100%;
@@ -260,11 +263,21 @@ iframe {
     background-color: var(--color-box-orange);
 }
 .orangeBoxButton {
-    font-family: azo-sans-web;
     background-color: var(--color-box-orange-dark);
 }
 .orangeBoxButton:hover {
     color: var(--color-box-orange-dark);
+    background-color: var(--color-white);
+}
+.redBox {
+    color: var(--color-white);
+    background-color: var(--color-box-red);
+}
+.redBoxButton {
+    background-color: var(--color-box-red-dark);
+}
+.redBoxButton:hover {
+    color: var(--color-box-red-dark);
     background-color: var(--color-white);
 }
 .boxImageContainer {
