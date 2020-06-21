@@ -4,6 +4,7 @@ import React from "react";
 import Home from "./content/Home";
 import About from "./content/About";
 import Work from "./content/Work";
+import NotFound from "./content/NotFound";
 import Header from "./content/components/Header"
 import Footer from "./content/components/Footer"
 
@@ -20,7 +21,7 @@ const Content = () => {
 				<Route exact path="/" component={Home} />
 				<Route path="/about" component={About} />
 				<Route path="/work" component={Work} />
-				<Route component={Home} />
+				<Route component={NotFound} />
 			</Switch>
 		</div>
 	);
