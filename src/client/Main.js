@@ -9,15 +9,19 @@ import Footer from "./content/components/Footer"
 
 import {
 	Route,
-	BrowserRouter
+	BrowserRouter,
+	Switch
 } from "react-router-dom";
 
 const Content = () => {
 	return (
 		<div className="content">
-			<Route exact path="/" component={Home} />
-			<Route path="/about" component={About} />
-			<Route path="/work" component={Work} />
+			<Switch>
+				<Route exact path="/" component={Home} />
+				<Route path="/about" component={About} />
+				<Route path="/work" component={Work} />
+				<Route component={Home} />
+			</Switch>
 		</div>
 	);
 }

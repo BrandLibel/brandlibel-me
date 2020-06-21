@@ -14,12 +14,6 @@ app.get('*', function (req, res){
     res.sendFile(path.join(__dirname, '/../../dist/index.html'))
 });
 
-// redirect unused pages
-app.get('/moody', function (req, res, next){
-    console.log('redirecting');
-    res.redirect('/work');
-});
-
 app.listen(3000);
 
 console.log('Hello World');
