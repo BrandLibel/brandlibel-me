@@ -1,0 +1,53 @@
+.header {
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 2rem;
+    color: var(--color-header-text);
+    background-color: var(--color-header);
+    padding: 1.25rem 0;
+
+    display: table;
+    width: 100%;
+
+    max-width: 1200px;
+    position: relative;
+    margin: auto auto;
+}
+.footer {
+    
+}
+.logoContainer {
+    padding: 0 1.25rem;
+    vertical-align: middle;
+}
+.logoImg {
+    float: left;
+    display: block;
+    width: 32px;
+}
+
+.nav {
+    vertical-align: middle;
+    float: right;
+}
+
+.nav > ul {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.nav > ul > li {
+    display: inline;
+    margin: 2rem;
+}
+
+a {
+    color: var(--color-header-text);
+}
+a:hover {
+    color: var(--color-header-text-select);
+}
+.selectedHeaderItem {
+    color: var(--color-header-text-select);
+}

@@ -1,0 +1,22 @@
+.box {
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.box > h1 {
+    font-size: 2.75rem;
+    line-height: 3rem;
+    font-weight: black;
+}
+.box > h2 {
+    font-size: 2.2rem;
+    line-height: 2.5rem;
+}
+.box > p {
+    font-weight: medium;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    padding-bottom: 0;
+    margin-bottom: 2.4rem;
+}
