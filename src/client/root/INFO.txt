@@ -2,6 +2,7 @@ Most contents in this folder is intentionally untracked in Git.
 
 Whatever is put in this folder will be moved into the root directory
 of the production website. 
+(Except this file, which is excluded. Configure in webpack.config.js)
 
 This is good for storing things like sitemap.xml,
 or Google/Bing website verification files.
