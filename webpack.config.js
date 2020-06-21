@@ -44,7 +44,12 @@ module.exports = {
         ),
         new CopyWebpackPlugin({
             patterns: [
-                { from: './src/client/root' }
+                {
+                    from: './src/client/root',
+                    globOptions: {
+                        ignore: ['**/INFO.txt']
+                    }
+                }
             ]
         })
     ]
