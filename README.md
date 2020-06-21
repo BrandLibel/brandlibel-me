@@ -1,18 +1,17 @@
-#BrandLibel.me
+# BrandLibel.me
 My personal website built using React.js and Node.js
 
-##Requirements
+## Requirements
 - [node.js](https://nodejs.org) (I used version 10.16.0)
 - [yarn](https://yarnpkg.com/)
 
-##Install:
+## Install:
 - `yarn install`
 
-##Test locally:
-- `yarn start`
+## Local test build:
+This runs the website on `webpack-dev-server`. Instantly see client-side changes without rebuilding. Currently buggy due to BrowserRouter.
+- `yarn dev`
 - visit `localhost:8080`
 
-##Build and run in production:
-- `yarn build`
+## Production build (on port 3000):
 - `yarn prod`
-- visit `localhost:3000`

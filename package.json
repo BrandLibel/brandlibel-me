@@ -4,9 +4,8 @@
   "description": "My portfolio website built with Node.js and React.js",
   "main": "src/server/server.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack -p",
-    "prod": "node src/server/server.js",
+    "dev": "webpack-dev-server",
+    "prod": "webpack -p && node src/server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
