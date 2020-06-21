@@ -9,7 +9,7 @@ import Footer from "./content/components/Footer"
 
 import {
 	Route,
-	HashRouter
+	BrowserRouter
 } from "react-router-dom";
 
 const Content = () => {
@@ -25,11 +25,11 @@ const Content = () => {
 export default class Main extends React.Component {
 	render() {
 		return (
-			<HashRouter>
+			<BrowserRouter>
 				<Header />
 				<Content />
 				<Footer />
-			</HashRouter>
+			</BrowserRouter>
 		);
 	}
 }
