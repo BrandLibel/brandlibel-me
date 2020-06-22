@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function Box(props) {
 	return (
-		<div className={`${styles.box} ${(props.color || global.COLORS.BLUE)}Box`}>
+		<div className={`${styles.box} ${(props.color || global.COLORS.BLUE)}Box ${props.sizeStyle}`}>
 			{props.children}
 		</div>
 	);
