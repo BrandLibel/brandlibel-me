@@ -7,14 +7,14 @@ export default class Home extends React.Component {
 	render() {
 		return (
 			<div className="boxGrid">
-				<Box sizeStyle="boxWide">
+				<Box wide>
 					<h1>Brandon Li, Full Stack Developer</h1>
 					<p>Hello there! I'm Brandon, and I create websites, mobile apps, and games.</p>
 					<BoxButtonNav to="/work" label="See all my work" />
 					<BoxButtonA label="Contact me" href={`mailto:${genEmAddr()}`} />
 				</Box>
 
-				<Box color={global.COLORS.ORANGE} sizeStyle="boxLeft">
+				<Box color={global.COLORS.ORANGE} left>
 					<h1>Ninjam.io</h1>
 					<p>A real-time multiplayer ninja action game.</p>
 					<p>Node.js, Websockets, Express.js, MySQL, Redis, Pug, and Pixi.js</p>
