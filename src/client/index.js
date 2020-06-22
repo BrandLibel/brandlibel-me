@@ -10,7 +10,8 @@ global.COLORS = {
 	BLUE: "blue",
 	GREEN: "green",
 	ORANGE: "orange",
-	RED: "red"
+	RED: "red",
+	CLEAR: "clear"
 };
 
 ReactDOM.render(<Main/>, document.getElementById('root'));
