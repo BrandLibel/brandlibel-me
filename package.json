@@ -4,19 +4,19 @@
   "description": "My portfolio website built with Node.js and React.js",
   "main": "src/server/server.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack -p",
-    "prod": "node src/server/server.js",
+    "dev": "webpack-dev-server",
+    "prod": "webpack -p && node src/server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://BrandonLi4593@bitbucket.org/BrandonLi4593/brandlibel-me-react.git"
+    "url": "https://github.com/BrandLibel/brandlibel-me"
   },
   "author": "Brandon Li",
   "license": "BSD-4-Clause",
   "homepage": "https://brandlibel.me",
   "dependencies": {
+    "copy-webpack-plugin": "^6.0.2",
     "css-loader": "^3.3.0",
     "express": "^4.17.1",
     "react": "^16.12.0",

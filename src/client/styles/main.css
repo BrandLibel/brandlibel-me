@@ -10,8 +10,11 @@ html {
     --color-box-green: #00ce00;
     --color-box-green-dark: #00B500;
 
-    --color-box-orange: #ff6900;
-    --color-box-orange-dark: #D95A00;
+    --color-box-orange: #E86100;
+    --color-box-orange-dark: #C25100;
+
+    --color-box-red: #CF0000;
+    --color-box-red-dark: #A80000;
 
     --color-header: #3D3C38;
     font-size: 100%;
@@ -142,34 +145,12 @@ footer p {
     width: 75%;
     margin: auto;
 }
-
-.boxCenter {
-    margin: 1rem auto;
-    width: 80vw;
-    max-width: 768px;
-}
-
-.boxLeft {
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    width: 50vw;
-}
-
 .center {
     display: block;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
-
-.right {
-    display: block;
-    text-align: right;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .item {
     margin-bottom: 4rem;
     margin-top: 4rem;
@@ -188,57 +169,32 @@ iframe {
     max-width: 100%;
 }
 
-.homeBoxGrid {
-    position:relative;
-    max-width:1200px;
-    width: 100%;
-    margin:auto auto;
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: 
-        "bluebox bluebox"
-        "orangebox pic";
-}
-
-.aboutBoxGrid {
-    position:relative;
-    max-width:1200px;
-    width: 100%;
-    margin:auto auto;
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: 
-        "clearbox pic";
-}
-.aboutBoxGridReversed {
-    position:relative;
-    max-width:1200px;
-    width: 100%;
-    margin:auto auto;
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: 
-        "pic clearbox";
-}
-
-.homeBox {
+.boxGrid {
     position: relative;
-    padding: 20px;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.72);
-    box-sizing: border-box;
-    display: inline-block;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-auto-rows: auto;
+}
+
+.boxLeft {
+    grid-column: 1 / 2;
+}
+
+.boxRight {
+    grid-column: 2 / 3;
+}
+
+.boxWide {
+    grid-column: 1 / 3;
 }
 .clearBox {
-    grid-area: clearbox;
     color: var(--color-text);
 }
 .blueBox {
     color: var(--color-white);
-    grid-area: bluebox;
     background-color: var(--color-box-blue);
 }
 .blueBoxButton {
@@ -251,24 +207,31 @@ iframe {
 }
 .greenBox {
     color: var(--color-white);
-    grid-area: greenbox;
     background-color: var(--color-box-green);
 }
 .orangeBox {
     color: var(--color-white);
-    grid-area: orangebox;
     background-color: var(--color-box-orange);
 }
 .orangeBoxButton {
-    font-family: azo-sans-web;
     background-color: var(--color-box-orange-dark);
 }
 .orangeBoxButton:hover {
     color: var(--color-box-orange-dark);
     background-color: var(--color-white);
 }
+.redBox {
+    color: var(--color-white);
+    background-color: var(--color-box-red);
+}
+.redBoxButton {
+    background-color: var(--color-box-red-dark);
+}
+.redBoxButton:hover {
+    color: var(--color-box-red-dark);
+    background-color: var(--color-white);
+}
 .boxImageContainer {
-    grid-area: pic;
     position: relative;
     margin: auto;
 }

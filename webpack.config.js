@@ -1,5 +1,6 @@
 const path = require('path');
 const HWP = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
     entry: path.join(__dirname, '/src/client/index.js'),
     output: {
@@ -40,6 +41,16 @@ module.exports = {
     plugins: [
         new HWP(
             { template: path.join(__dirname, '/src/client/index.html') }
-        )
+        ),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: './src/client/root',
+                    globOptions: {
+                        ignore: ['**/INFO.txt']
+                    }
+                }
+            ]
+        })
     ]
 }

@@ -9,7 +9,9 @@ import Main from "./Main";
 global.COLORS = {
 	BLUE: "blue",
 	GREEN: "green",
-	ORANGE: "orange"
+	ORANGE: "orange",
+	RED: "red",
+	CLEAR: "clear"
 };
 
 ReactDOM.render(<Main/>, document.getElementById('root'));
