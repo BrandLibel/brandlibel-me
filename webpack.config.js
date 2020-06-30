@@ -35,7 +35,13 @@ module.exports = {
                     test: /\.css$/i,
                     use: ['style-loader', 'css-loader'],
                     exclude: /\.module\.css$/i
-                }
+                },
+                {
+                    test: /\.(png|svg|jpg|gif)$/,
+                    use: [
+                        'file-loader',
+                    ],
+                },
             ]
     },
     plugins: [
@@ -47,9 +53,11 @@ module.exports = {
                 {
                     from: './src/client/root',
                     globOptions: {
-                        ignore: ['**/INFO.txt']
+                        ignore: ['INFO.txt']
                     }
-                }
+                },
+                { from: './src/client/favicon.ico' },
+                { from: './src/client/favicon-indefinite.ico' },
             ]
         })
     ]

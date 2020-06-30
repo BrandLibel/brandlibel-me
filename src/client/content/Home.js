@@ -2,6 +2,7 @@ import React from 'react';
 import Box from "./components/Box";
 import { BoxButtonNav, BoxButtonA } from "./components/Button";
 import genEmAddr from "../mail-gen";
+import imgPathNinjam from "../data/img/ninjam_screenshot.png";
 
 export default class Home extends React.Component {
 	render() {
@@ -26,7 +27,7 @@ export default class Home extends React.Component {
 						<div className="boxImageTint"></div>
 
 						<img className="boxImage"
-							src="src/client/data/img/ninjam_screenshot.png" />
+							src={imgPathNinjam} />
 					</a>
 				</div>
 			</div>
