@@ -55,7 +55,9 @@ module.exports = {
                     globOptions: {
                         ignore: ['**/INFO.txt']
                     }
-                }
+                },
+                { from: './src/client/favicon.ico' },
+                { from: './src/client/favicon-indefinite.ico' },
             ]
         })
     ]
