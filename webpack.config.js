@@ -53,7 +53,7 @@ module.exports = {
                 {
                     from: './src/client/root',
                     globOptions: {
-                        ignore: ['**/INFO.txt']
+                        ignore: ['INFO.txt']
                     }
                 },
                 { from: './src/client/favicon.ico' },
