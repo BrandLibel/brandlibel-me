@@ -1,5 +1,6 @@
 import React from 'react';
 import Box from "./components/Box";
+import styles from "../styles/module/Work.module.css";
 
 import jsonProjects from "../data/json/projects.json5";
 
@@ -9,8 +10,9 @@ function WorkItem(props) {
 			color = {props.color}
 			wide
 			key = {props.key}
+			style = {props}
 		>
-			<h2 className="big2"><a href={props.homepage} target="_blank">{props.name}</a></h2>
+			<h2><a className={styles.projectNameLink} href={props.homepage} target="_blank">{props.name}</a></h2>
 			<p>({props.date})</p>
 			<p>{props.description}</p>
 		</Box>
@@ -38,7 +40,6 @@ function WorkList() {
 		<div className="boxGrid">
 			{workItems}
 		</div>
-		// TODO: create, from a json file, a list of sortable WorkItemBox(?) components
 	);
 }
 
