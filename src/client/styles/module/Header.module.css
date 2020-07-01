@@ -42,10 +42,10 @@
     margin: 2rem;
 }
 
-a {
+.navLinkItem {
     color: var(--color-header-text);
 }
-a:hover {
+.navLinkItem:hover {
     color: var(--color-header-text-select);
 }
 .selectedHeaderItem {
