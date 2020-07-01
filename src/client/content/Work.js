@@ -3,24 +3,40 @@ import Box from "./components/Box";
 
 import jsonProjects from "../data/json/projects.json5";
 
+function WorkItem(props) {
+	return (
+		<Box
+			color = {props.color}
+			wide
+			key = {props.key}
+		>
+			<h2 className="big2"><a href={props.homepage} target="_blank">{props.name}</a></h2>
+			<p>({props.date})</p>
+			<p>{props.description}</p>
+		</Box>
+	)
+}
+
 function WorkList() {
-	let boxes = jsonProjects.map((project, index) => {
+	let workItems = jsonProjects.map((project, index) => {
 		return (
-			<Box
+			<WorkItem
 				color = {
 					index % 2 == 0 ? global.COLORS.BLUE : global.COLORS.ORANGE
 				}
-				wide
 				key = {project.id}
+				name = {project.name}
+				description = {project.description}
+				date = {project.date}
+				homepage = {project.homepage}
 			>
-				<h2>{project.name}</h2>
-			</Box>
+			</WorkItem>
 		);
 	});
 
 	return (
 		<div className="boxGrid">
-			{boxes}
+			{workItems}
 		</div>
 		// TODO: create, from a json file, a list of sortable WorkItemBox(?) components
 	);

@@ -2,6 +2,7 @@
 	{
 		"id": "ninjam-io",
 		"name": "Ninjam.io",
+		"homepage": "https://ninjam.io",
 		"major": true,
 		"date": "May 2019",
 		"description": "Real-time multiplayer ninja action game with 15 unique abilities.",
@@ -10,6 +11,7 @@
 	{
 		"id": "project-spouse",
 		"name": "Indefinite 2: Love",
+		"homepage": "/indefinite-love",
 		"major": true,
 		"date": "February 2017",
 		"description": "Get grilled by your peers in absurd, humorous scenarios.",
@@ -18,6 +20,7 @@
 	{
 		"id": "project-terror",
 		"name": "Indefinite: Interrogation Game",
+		"homepage": "/indefinite",
 		"major": true,
 		"date": "April 2015",
 		"description": "Experience being interrogated by a shadowy government.",
@@ -26,6 +29,7 @@
 	{
 		"id": "project-hiv",
 		"name": "HIV and Her",
+		"homepage": "/hiv-and-her",
 		"major": true,
 		"date": "March 2014",
 		"description": "A colorful and abstract educational game about HIV prevention. Won honorable mention in CDC's game competition.",
@@ -34,6 +38,7 @@
 	{
 		"id": "prince-kong",
 		"name": "Prince Kong",
+		"homepage": "/prince-kong",
 		"major": false,
 		"date": "October 2013",
 		"description": "Climb the Empire State Building. Won the grand prize in a 48-hour game jam.",
