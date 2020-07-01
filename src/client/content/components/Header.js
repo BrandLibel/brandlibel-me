@@ -13,6 +13,7 @@ const HeaderItem = (props) => {
 			<span>
 				<NavLink
 					to={props.path}
+					className={styles.navLinkItem}
 					activeClassName={styles.selectedHeaderItem}
 					exact
 				>
