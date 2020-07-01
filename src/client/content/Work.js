@@ -1,23 +1,16 @@
 import React from 'react';
 import Box from "./components/Box";
 
-import jsonPathProjects from "../data/json/projects.json5";
+import jsonProjects from "../data/json/projects.json5";
 
 function WorkList() {
-	let boxes = [];
-
-	boxes.push(
-		<Box color={global.COLORS.BLUE} wide key="1"/>
-	);
-	boxes.push(
-		<Box color={global.COLORS.ORANGE} wide key="2"/>
-	);
-	boxes.push(
-		<Box color={global.COLORS.BLUE} wide key="3"/>
-	);
-	boxes.push(
-		<Box color={global.COLORS.ORANGE} wide key="4"/>
-	);
+	let boxes = jsonProjects.map(project => {
+		return (
+			<Box color={global.COLORS.BLUE} wide key={project.id}>
+				<h2>{project.name}</h2>
+			</Box>
+		);
+	});
 
 	return (
 		<div className="boxGrid">
