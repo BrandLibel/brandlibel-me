@@ -27,10 +27,12 @@ function WorkList() {
 
 export default function Work() {
 	return (
-		<div className="boxGrid">
-			<Box color={global.COLORS.CLEAR} wide>
-				<h1>Stuff Brandon Created</h1>
-			</Box>
+		<div>
+			<div className="boxGrid">
+				<Box color={global.COLORS.CLEAR} wide>
+					<h1>Some of Brandon's Work</h1>
+				</Box>
+			</div>
 			<WorkList />
 		</div>
 	);
