@@ -1,6 +1,8 @@
 import React from 'react';
 import Box from "./components/Box";
 
+import jsonPathProjects from "../data/json/projects.json5";
+
 function WorkList() {
 	let boxes = [];
 
