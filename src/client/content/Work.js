@@ -1,12 +1,20 @@
 import React from 'react';
+import Box from "./components/Box";
 
-export default class Work extends React.Component {
-	render(){
-		return (
-			<div>
-				<h1>Work</h1>
-				<p>This is a list of work that I've done!</p>
-			</div>
-		);
-	}
+function WorkList() {
+	return (
+		<div></div>
+		// TODO: create, from a json file, a list of sortable WorkItemBox(?) components
+	);
+}
+
+export default function Work() {
+	return (
+		<div className="boxGrid">
+			<Box color={global.COLORS.CLEAR} wide>
+				<h1>Stuff Brandon Created</h1>
+			</Box>
+			<WorkList />
+		</div>
+	);
 }
