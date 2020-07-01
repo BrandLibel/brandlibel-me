@@ -4,9 +4,15 @@ import Box from "./components/Box";
 import jsonProjects from "../data/json/projects.json5";
 
 function WorkList() {
-	let boxes = jsonProjects.map(project => {
+	let boxes = jsonProjects.map((project, index) => {
 		return (
-			<Box color={global.COLORS.BLUE} wide key={project.id}>
+			<Box
+				color = {
+					index % 2 == 0 ? global.COLORS.BLUE : global.COLORS.ORANGE
+				}
+				wide
+				key = {project.id}
+			>
 				<h2>{project.name}</h2>
 			</Box>
 		);
@@ -25,7 +31,7 @@ export default function Work() {
 		<div>
 			<div className="boxGrid">
 				<Box color={global.COLORS.CLEAR} wide>
-					<h1>Some of Brandon's Work</h1>
+					<h1>Projects and Work</h1>
 				</Box>
 			</div>
 			<WorkList />
