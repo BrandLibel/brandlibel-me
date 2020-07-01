@@ -60,12 +60,12 @@ p {
     padding-bottom: 1.1rem;
 }
 a {
-	color: #00ab00;
+	color: var(--color-brandlibel-blue);
     text-decoration: none;
     transition: color 0.4s ease-in-out;
 }
 a:hover {
-    color: #d42ad4;
+    color: var(--color-box-orange);
 }
 img {
     max-width: 100%;
