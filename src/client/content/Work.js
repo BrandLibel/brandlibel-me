@@ -1,5 +1,6 @@
 import React from 'react';
 import Box from "./components/Box";
+import { CutoutText } from "./components/Box";
 import styles from "../styles/module/Work.module.css";
 
 import jsonProjects from "../data/json/projects.json5";
@@ -8,12 +9,11 @@ function WorkItem(props) {
 	return (
 		<Box
 			color = {props.color}
-			wide
+			wide spaced
 			key = {props.key}
-			style = {props}
 		>
 			<h2><a className={styles.projectNameLink} href={props.homepage} target="_blank">{props.name}</a></h2>
-			<p>({props.date})</p>
+			<p>{props.date}</p>
 			<p>{props.description}</p>
 		</Box>
 	)
