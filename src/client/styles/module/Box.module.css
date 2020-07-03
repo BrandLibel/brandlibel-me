@@ -20,6 +20,9 @@
     padding-bottom: 0;
     margin-bottom: 2.4rem;
 }
+.box > img {
+    margin-bottom: 2.4rem;
+}
 .spacedBox {
 	margin-bottom: 3rem;
 }
