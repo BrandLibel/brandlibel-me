@@ -4,6 +4,7 @@ import styles from "../styles/module/Work.module.css";
 
 import jsonProjects from "../data/json/projects.json5";
 
+import imgPathNinjam from "../data/img/game_ninjam.png";
 import imgPathTerror from "../data/img/game_terror.png";
 import imgPathSpouse from "../data/img/game_spouse.png";
 import imgPathHiv from "../data/img/game_hiv.png";
@@ -12,6 +13,7 @@ import imgPathInProgress from "../data/img/game_inProgress.png";
 
 function idToPath(projectId) {
 	switch (projectId) {
+		case "ninjam-io": return imgPathNinjam;
 		case "project-terror": return imgPathTerror;
 		case "project-spouse": return imgPathSpouse;
 		case "project-hiv": return imgPathHiv;

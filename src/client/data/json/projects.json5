@@ -1,5 +1,14 @@
 [
 	{
+		"id": "brandlibel-me",
+		"name": "BrandLibel.me",
+		"homepage": "https://brandlibel.me",
+		"major": true,
+		"date": "July 2020",
+		"description": "Where you are right now! This new version of my personal website uses React and is a hybrid single-page / multi-page application.",
+		"tech": ["React.js", "Node.js", "Express.js", "Webpack"],
+	},
+	{
 		"id": "ninjam-io",
 		"name": "Ninjam.io",
 		"homepage": "https://ninjam.io",
