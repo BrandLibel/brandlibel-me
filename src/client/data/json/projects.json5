@@ -15,7 +15,7 @@
 		"major": true,
 		"date": "February 2017",
 		"description": "Get grilled by your peers in absurd, humorous scenarios. Has Google Play Games and Apple Game Center integration for leaderboards and achievements.",
-		"tech": ["Actionscript 3, Adobe AIR"],
+		"tech": ["Actionscript 3", "Adobe AIR"],
 	},
 	{
 		"id": "project-terror",
@@ -24,7 +24,7 @@
 		"major": true,
 		"date": "April 2015",
 		"description": "Experience being interrogated by a shadowy government. Has Google Play Games and Apple Game Center integration for leaderboards and achievements.",
-		"tech": ["Actionscript 3, Adobe AIR"],
+		"tech": ["Actionscript 3", "Adobe AIR"],
 	},
 	{
 		"id": "project-hiv",

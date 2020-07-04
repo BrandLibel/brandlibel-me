@@ -20,7 +20,18 @@ function idToPath(projectId) {
 	}
 }
 
+function WorkItemTech(props) {
+	return <li className={styles.skillListItem}>{props.text}</li>
+}
+
 function WorkItem(props) {
+
+	let techList = props.skills.map(skillStr => {
+		return (
+			<WorkItemTech text = {skillStr} />
+		)
+	});
+
 	return (
 		<Box
 			color={props.color}
@@ -30,7 +41,8 @@ function WorkItem(props) {
 			<h2><a className={styles.projectNameLink} href={props.homepage} target="_blank">{props.name}</a></h2>
 			<p>{props.date}</p>
 			<p><a href={props.homepage}><img src={idToPath(props.id)}></img></a></p>
-		<p>{props.description}</p>
+			<p>{props.description}</p>
+			<p><ul className={styles.skillList}>{techList}</ul></p>
 		</Box >
 	)
 }
@@ -48,6 +60,7 @@ function WorkList() {
 				description={project.description}
 				date={project.date}
 				homepage={project.homepage}
+				skills={project.tech}
 			>
 			</WorkItem>
 		);
