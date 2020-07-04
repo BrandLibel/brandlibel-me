@@ -12,6 +12,8 @@ import imgPathHiv from "../data/img/game_hiv.png";
 import imgPathPrince from "../data/img/game_prince.png";
 import imgPathInProgress from "../data/img/game_inProgress.png";
 
+import iconGithub from "../data/img/github.png";
+
 function idToPath(projectId) {
 	switch (projectId) {
 		case "brandlibel-me": return imgPathWebsite;
@@ -36,6 +38,18 @@ function WorkItem(props) {
 		)
 	});
 
+	let linkList = props.links.map(url => {
+
+		let imgIcon = iconGithub; // default
+		if (url.includes("github.com")) imgIcon = iconGithub; 
+		else if (url.includes("apple.com")) imgIcon = iconGithub; //ios
+		else if (url.includes("play.google.com")) imgIcon = iconGithub; //android
+
+		return (
+			<a href={url} target="_blank"><img src={imgIcon}></img></a>
+		)
+	});
+
 	return (
 		<Box
 			color={props.color}
@@ -47,8 +61,10 @@ function WorkItem(props) {
 			<p><a href={props.homepage} target="_blank"><img src={idToPath(props.id)}></img></a></p>
 			<p>{props.description}</p>
 			<p><ul className={styles.skillList}>{techList}</ul></p>
-		</Box >
-	)
+			<p>Links:</p>
+			<p>{linkList}</p>
+		</Box>
+	);
 }
 
 function WorkList() {
@@ -65,6 +81,7 @@ function WorkList() {
 				date={project.date}
 				homepage={project.homepage}
 				skills={project.tech}
+				links={project.links}
 			>
 			</WorkItem>
 		);
