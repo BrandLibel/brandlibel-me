@@ -5,9 +5,6 @@
 	color: var(--color-white);
     text-decoration: underline;
 }
-.skillList{
-	list-style-type: circle;
-}
 .skillListItem {
 	float: left;
     list-style-position: inside;
