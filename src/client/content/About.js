@@ -12,7 +12,7 @@ export default class About extends React.Component {
 						<h1>About Brandon</h1>
 						<p>I am Brandon Li, a full stack developer based in Brooklyn.</p>
 						<p>I started to teach myself to program in 2011 when I was in high school.</p>
-						<p>I joined coding competitions and <a href="https://devpost.com/software/hiv-and-her">won an honorable mention</a> in a game development competition commissioned by the CDC.</p>
+						<p>I joined coding competitions and <a className="clearBoxLink" href="https://devpost.com/software/hiv-and-her">won an honorable mention</a> in a game development competition commissioned by the CDC.</p>
 					</Box>
 					
 					<img className="boxImage boxRight"
