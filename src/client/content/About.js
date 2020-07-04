@@ -1,5 +1,7 @@
 import React from 'react';
 import Box from "./components/Box";
+import imgPathFace from "../data/img/brandon_face_600.png";
+import imgPathGate from "../data/img/gate.png";
 
 export default class About extends React.Component {
 	render() {
@@ -14,15 +16,11 @@ export default class About extends React.Component {
 					</Box>
 					
 					<img className="boxImage boxRight"
-						src="src/client/data/img/bradon_face_600.png"
-						srcSet="src/client/data/img/bradon_face_600.png 600w,
-								src/client/data/img/bradon_face.png 1075w"
-						sizes="(max-width: 2000px) 600px,
-								1075px"
+						src={imgPathFace}
 					/>
 
 					<img className="boxImage boxLeft"
-						src="src/client/data/img/gate.png" />
+						src={imgPathGate} />
 
 					<Box color={global.COLORS.CLEAR} right>
 						<p>After graduating from high school, I became a self-employed / freelance software developer. I continued to build and release my own games while working on a variety of projects for clients around the world.</p>
@@ -31,7 +29,7 @@ export default class About extends React.Component {
 
 					<Box color={global.COLORS.CLEAR} left>
 						<p>I enjoy building and shipping great products and writing quality code. I am comfortable with all stages of development, from design to release.</p>
-						<p>I am currently employed at Bundil, building the core functionality of the Android app.</p>
+						<p>My most recent employment is at Bundil as an Android Developer. I worked on developing the core functionality of the Android app.</p>
 					</Box>
 				</div>
 			</div>

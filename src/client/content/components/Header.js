@@ -1,7 +1,9 @@
 import React from "react";
-import styles from '../../styles/module/Header.module.css';
+import styles from "../../styles/module/Header.module.css";
 
 import { NavLink } from "react-router-dom";
+
+import imgPathLogo from "../../data/img/brandlibel_logo.svg";
 
 const HeaderList = (props) => <nav className={styles.nav}><ul>{props.children}</ul></nav>
 
@@ -11,6 +13,7 @@ const HeaderItem = (props) => {
 			<span>
 				<NavLink
 					to={props.path}
+					className={styles.navLinkItem}
 					activeClassName={styles.selectedHeaderItem}
 					exact
 				>
@@ -35,7 +38,7 @@ export default function Header() {
 	return (
 		<header className={`${styles.header}`}>
 			<div>
-				<HeaderLogo path="/" src="src/client/data/img/brandlibel_logo.svg" />
+				<HeaderLogo path="/" src={imgPathLogo} />
 				<HeaderList>
 					<HeaderItem path="/" name="HOME" />
 					<HeaderItem path="/work" name="WORK" />

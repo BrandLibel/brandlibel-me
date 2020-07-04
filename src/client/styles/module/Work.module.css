@@ -1,0 +1,7 @@
+.projectNameLink {
+	color: var(--color-white);
+}
+.projectNameLink:hover {
+	color: var(--color-white);
+    text-decoration: underline;
+}
