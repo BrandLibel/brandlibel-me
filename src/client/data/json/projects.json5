@@ -29,7 +29,7 @@
 	{
 		"id": "project-hiv",
 		"name": "HIV and Her",
-		"homepage": "/hiv-and-her",
+		"homepage": "https://devpost.com/software/hiv-and-her",
 		"major": true,
 		"date": "March 2014",
 		"description": "A colorful and abstract educational game about HIV prevention. Won honorable mention in CDC's game competition.",

@@ -40,7 +40,7 @@ function WorkItem(props) {
 		>
 			<h2><a className={styles.projectNameLink} href={props.homepage} target="_blank">{props.name}</a></h2>
 			<p>{props.date}</p>
-			<p><a href={props.homepage}><img src={idToPath(props.id)}></img></a></p>
+			<p><a href={props.homepage} target="_blank"><img src={idToPath(props.id)}></img></a></p>
 			<p>{props.description}</p>
 			<p><ul className={styles.skillList}>{techList}</ul></p>
 		</Box >
