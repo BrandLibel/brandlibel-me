@@ -56,8 +56,8 @@ function WorkItem(props) {
 			wide spaced
 			key={props.id}
 		>
-			<h2><a className={styles.projectNameLink} href={props.homepage} target="_blank">{props.name}</a> <span className={styles.right}>{props.date}</span></h2>
-			<p><a href={props.homepage} target="_blank"><img src={idToPath(props.id)}></img></a></p>
+			<h2 className={styles.inlined}><a className={styles.projectNameLink} href={props.homepage} target="_blank">{props.name}</a></h2><p className={styles.right}>{props.date}</p>
+			<p className={styles.bannerImage}><a href={props.homepage} target="_blank"><img src={idToPath(props.id)}></img></a></p>
 			<p>{props.description}</p>
 			<p><ul className={styles.skillList}>{techList}</ul></p>
 			<p>{linkList}</p>

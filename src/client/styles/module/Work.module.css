@@ -9,9 +9,15 @@
 	float: left;
     list-style-position: inside;
     list-style-type: disc;
-    margin-right: 1em;
+    margin-right: 1rem;
+}
+.inlined {
+	display: inline;
 }
 .right {
 	float: right;
 	text-align: right;
+}
+.bannerImage {
+	margin-top: 2rem;
 }
