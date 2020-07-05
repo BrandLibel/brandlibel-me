@@ -56,12 +56,10 @@ function WorkItem(props) {
 			wide spaced
 			key={props.id}
 		>
-			<h2><a className={styles.projectNameLink} href={props.homepage} target="_blank">{props.name}</a></h2>
-			<p>{props.date}</p>
+			<h2><a className={styles.projectNameLink} href={props.homepage} target="_blank">{props.name}</a> <span className={styles.right}>{props.date}</span></h2>
 			<p><a href={props.homepage} target="_blank"><img src={idToPath(props.id)}></img></a></p>
 			<p>{props.description}</p>
 			<p><ul className={styles.skillList}>{techList}</ul></p>
-			<p>Links:</p>
 			<p>{linkList}</p>
 		</Box>
 	);
