@@ -11,10 +11,12 @@
     list-style-type: disc;
     margin-right: 1rem;
 }
-.inlined {
-	display: inline;
+.boxHeader {
+	margin-top: 1.5rem;
+	display: inline-block;
 }
-.right {
+.boxDate {
+	margin-top: 1.5rem;
 	float: right;
 	text-align: right;
 }
