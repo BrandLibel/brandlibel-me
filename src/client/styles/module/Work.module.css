@@ -5,6 +5,10 @@
 	color: var(--color-white);
     text-decoration: underline;
 }
+.skillList {
+	margin: 0;
+	display: inline-block;
+}
 .skillListItem {
 	float: left;
     list-style-position: inside;
