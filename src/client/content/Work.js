@@ -15,6 +15,7 @@ import imgPathInProgress from "../data/img/game_inProgress.png";
 import iconGithub from "../data/img/github.png";
 import iconAndroid from "../data/img/google-play-badge.png";
 import iconIOS from "../data/img/apple-badge.svg";
+import iconExternal from "../data/img/external.svg";
 
 function idToPath(projectId) {
 	switch (projectId) {
@@ -42,7 +43,7 @@ function WorkItem(props) {
 
 	let linkList = props.links.map(url => {
 
-		let imgIcon = iconGithub; // default
+		let imgIcon = iconExternal;
 		if (url.includes("github.com")) imgIcon = iconGithub; 
 		else if (url.includes("apple.com")) imgIcon = iconIOS;
 		else if (url.includes("play.google.com")) imgIcon = iconAndroid;
