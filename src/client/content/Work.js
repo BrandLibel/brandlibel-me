@@ -48,7 +48,7 @@ function WorkItem(props) {
 		else if (url.includes("play.google.com")) imgIcon = iconAndroid;
 
 		return (
-			<a href={url} target="_blank"><img src={imgIcon}></img></a>
+			<a href={url} target="_blank"><img className={styles.linkImage} src={imgIcon}></img></a>
 		)
 	});
 
