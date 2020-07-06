@@ -13,6 +13,8 @@ import imgPathPrince from "../data/img/game_prince.png";
 import imgPathInProgress from "../data/img/game_inProgress.png";
 
 import iconGithub from "../data/img/github.png";
+import iconAndroid from "../data/img/google-play-badge.png";
+import iconIOS from "../data/img/apple-badge.svg";
 
 function idToPath(projectId) {
 	switch (projectId) {
@@ -42,8 +44,8 @@ function WorkItem(props) {
 
 		let imgIcon = iconGithub; // default
 		if (url.includes("github.com")) imgIcon = iconGithub; 
-		else if (url.includes("apple.com")) imgIcon = iconGithub; //ios
-		else if (url.includes("play.google.com")) imgIcon = iconGithub; //android
+		else if (url.includes("apple.com")) imgIcon = iconIOS;
+		else if (url.includes("play.google.com")) imgIcon = iconAndroid;
 
 		return (
 			<a href={url} target="_blank"><img src={imgIcon}></img></a>
