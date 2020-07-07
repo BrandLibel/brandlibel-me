@@ -1,5 +1,6 @@
 import React from 'react';
 import Box from "./components/Box";
+import { BoxButtonA } from "./components/Button";
 import styles from "../styles/module/Work.module.css";
 
 import jsonProjects from "../data/json/projects.json5";
@@ -11,11 +12,6 @@ import imgPathSpouse from "../data/img/game_spouse.png";
 import imgPathHiv from "../data/img/game_hiv.png";
 import imgPathPrince from "../data/img/game_prince.png";
 import imgPathInProgress from "../data/img/game_inProgress.png";
-
-import iconGithub from "../data/img/github.png";
-import iconAndroid from "../data/img/google-play-badge.png";
-import iconIOS from "../data/img/apple-badge.svg";
-import iconExternal from "../data/img/external.svg";
 
 function idToPath(projectId) {
 	switch (projectId) {
@@ -43,14 +39,14 @@ function WorkItem(props) {
 
 	let linkList = props.links.map(url => {
 
-		let imgIcon = iconExternal;
-		if (url.includes("github.com")) imgIcon = iconGithub; 
-		else if (url.includes("apple.com")) imgIcon = iconIOS;
-		else if (url.includes("play.google.com")) imgIcon = iconAndroid;
+		let innerElement = "Visit Site";
+		if (url.includes("github.com")) innerElement = "GitHub";
+		else if (url.includes("apple.com")) innerElement = "iOS";
+		else if (url.includes("play.google.com")) innerElement = "Android";
 
 		return (
-			<a href={url} target="_blank"><img className={styles.linkImage} src={imgIcon}></img></a>
-		)
+			<BoxButtonA color={props.color} label={innerElement} href={url} target="_blank" />
+		);
 	});
 
 	return (
