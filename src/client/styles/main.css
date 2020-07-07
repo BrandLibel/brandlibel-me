@@ -257,3 +257,6 @@ iframe {
     min-height: 600px;
     object-fit: cover;
 }
+.boxImageFree {
+    object-fit: cover;
+}
