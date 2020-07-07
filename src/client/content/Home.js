@@ -3,7 +3,7 @@ import Box from "./components/Box";
 import { BoxButtonNav, BoxButtonA } from "./components/Button";
 import genEmAddr from "../mail-gen";
 import imgPathNinjam from "../data/img/ninjam_screenshot.png";
-import TintImage from "./components/Image";
+import { BoxTintImage } from "./components/Image";
 
 export default class Home extends React.Component {
 	render() {
@@ -24,7 +24,7 @@ export default class Home extends React.Component {
 					<BoxButtonA label="Play Ninjam.io" color={global.COLORS.ORANGE} href="https://ninjam.io" target="_blank" />
 				</Box>
 				<div className="boxImageContainer boxRight">
-					<TintImage href="https://ninjam.io" src={imgPathNinjam} />
+					<BoxTintImage href="https://ninjam.io" src={imgPathNinjam} />
 				</div>
 			</div>
 		);

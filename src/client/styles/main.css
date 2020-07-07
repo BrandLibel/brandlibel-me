@@ -251,3 +251,16 @@ iframe {
     min-height: 600px;
     object-fit: cover;
 }
+.bannerImageTint {
+    position: absolute;
+    background-color: #2DADD6AA;
+    width: 768px;
+    height: 260px;
+    transition: 0.4s ease-in-out;
+}
+.bannerImageTint:hover {
+    background-color: rgba(0,0,0,0);
+}
+.bannerImage {
+    object-fit: cover;
+}
