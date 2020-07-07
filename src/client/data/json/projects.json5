@@ -1,5 +1,15 @@
 [
 	{
+		"id": "brandlibel-me",
+		"name": "BrandLibel.me",
+		"homepage": "https://brandlibel.me",
+		"major": true,
+		"date": "July 2020",
+		"description": "Where you are right now! This new version of my personal website uses React and is a hybrid single-page / multi-page application.",
+		"tech": ["React.js", "Node.js", "Express.js", "Webpack"],
+		"links": ["https://brandlibel.me", "https://github.com/brandLibel/brandlibel-me"],
+	},
+	{
 		"id": "ninjam-io",
 		"name": "Ninjam.io",
 		"homepage": "https://ninjam.io",
@@ -7,6 +17,7 @@
 		"date": "May 2019",
 		"description": "Real-time multiplayer ninja action game. Fight other players and non-player demons to collect points and level up. 15 unique abilities to choose from. Has a user account and stat tracking system.",
 		"tech": ["Node.js", "Websockets", "Express.js", "MySQL", "Redis", "Pug", "Pixi.js"],
+		"links": ["https://ninjam.io"],
 	},
 	{
 		"id": "project-spouse",
@@ -15,7 +26,8 @@
 		"major": true,
 		"date": "February 2017",
 		"description": "Get grilled by your peers in absurd, humorous scenarios. Has Google Play Games and Apple Game Center integration for leaderboards and achievements.",
-		"tech": ["Actionscript 3, Adobe AIR"],
+		"tech": ["Actionscript 3", "Adobe AIR"],
+		"links": ["/indefinite-love", "https://apps.apple.com/us/app/indefinite-2-love/id1069215863", "https://play.google.com/store/apps/details?id=air.me.brandlibel.indefinite2"],
 	},
 	{
 		"id": "project-terror",
@@ -24,16 +36,18 @@
 		"major": true,
 		"date": "April 2015",
 		"description": "Experience being interrogated by a shadowy government. Has Google Play Games and Apple Game Center integration for leaderboards and achievements.",
-		"tech": ["Actionscript 3, Adobe AIR"],
+		"tech": ["Actionscript 3", "Adobe AIR"],
+		"links": ["/indefinite", "https://itunes.apple.com/us/app/indefinite-interrogation-game/id1039602724", "https://play.google.com/store/apps/details?id=air.me.brandlibel.indefinite"],
 	},
 	{
 		"id": "project-hiv",
 		"name": "HIV and Her",
-		"homepage": "/hiv-and-her",
+		"homepage": "https://devpost.com/software/hiv-and-her",
 		"major": true,
 		"date": "March 2014",
 		"description": "A colorful and abstract educational game about HIV prevention. Won honorable mention in CDC's game competition.",
 		"tech": ["Java", "Android"],
+		"links": ["https://devpost.com/software/hiv-and-her"],
 	},
 	{
 		"id": "prince-kong",
@@ -43,5 +57,6 @@
 		"date": "October 2013",
 		"description": "Climb the Empire State Building. Won the grand prize in a 48-hour game jam.",
 		"tech": ["HTML5", "Javascript", "Tresensa Game Engine"],
+		"links": ["/prince-kong"],
 	},
 ]
