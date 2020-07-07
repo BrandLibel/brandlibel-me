@@ -45,7 +45,7 @@ function WorkItem(props) {
 		else if (url.includes("play.google.com")) innerElement = "Android";
 
 		return (
-			<BoxButtonA color={props.color} label={innerElement} href={url} />
+			<BoxButtonA color={props.color} label={innerElement} href={url} target="_blank" />
 		);
 	});
 
