@@ -4,6 +4,7 @@ import styles from "../styles/module/Work.module.css";
 
 import jsonProjects from "../data/json/projects.json5";
 
+import imgPathWebsite from "../data/img/banner_website.png";
 import imgPathNinjam from "../data/img/game_ninjam.png";
 import imgPathTerror from "../data/img/game_terror.png";
 import imgPathSpouse from "../data/img/game_spouse.png";
@@ -11,8 +12,14 @@ import imgPathHiv from "../data/img/game_hiv.png";
 import imgPathPrince from "../data/img/game_prince.png";
 import imgPathInProgress from "../data/img/game_inProgress.png";
 
+import iconGithub from "../data/img/github.png";
+import iconAndroid from "../data/img/google-play-badge.png";
+import iconIOS from "../data/img/apple-badge.svg";
+import iconExternal from "../data/img/external.svg";
+
 function idToPath(projectId) {
 	switch (projectId) {
+		case "brandlibel-me": return imgPathWebsite;
 		case "ninjam-io": return imgPathNinjam;
 		case "project-terror": return imgPathTerror;
 		case "project-spouse": return imgPathSpouse;
@@ -34,19 +41,31 @@ function WorkItem(props) {
 		)
 	});
 
+	let linkList = props.links.map(url => {
+
+		let imgIcon = iconExternal;
+		if (url.includes("github.com")) imgIcon = iconGithub; 
+		else if (url.includes("apple.com")) imgIcon = iconIOS;
+		else if (url.includes("play.google.com")) imgIcon = iconAndroid;
+
+		return (
+			<a href={url} target="_blank"><img className={styles.linkImage} src={imgIcon}></img></a>
+		)
+	});
+
 	return (
 		<Box
 			color={props.color}
 			wide spaced
 			key={props.id}
 		>
-			<h2><a className={styles.projectNameLink} href={props.homepage} target="_blank">{props.name}</a></h2>
-			<p>{props.date}</p>
-			<p><a href={props.homepage} target="_blank"><img src={idToPath(props.id)}></img></a></p>
+			<h2 className={styles.boxHeader}><a className={styles.projectNameLink} href={props.homepage} target="_blank">{props.name}</a></h2><p className={styles.boxDate}>{props.date}</p>
+			<p className={styles.bannerImage}><a href={props.homepage} target="_blank"><img src={idToPath(props.id)}></img></a></p>
 			<p>{props.description}</p>
 			<p><ul className={styles.skillList}>{techList}</ul></p>
-		</Box >
-	)
+			<p>{linkList}</p>
+		</Box>
+	);
 }
 
 function WorkList() {
@@ -63,6 +82,7 @@ function WorkList() {
 				date={project.date}
 				homepage={project.homepage}
 				skills={project.tech}
+				links={project.links}
 			>
 			</WorkItem>
 		);
