@@ -47,7 +47,7 @@
 		"date": "March 2014",
 		"description": "A colorful and abstract educational game about HIV prevention. Won honorable mention in CDC's game competition.",
 		"tech": ["Java", "Android"],
-		"links": ["https://devpost.com/software/hiv-and-her"],
+		"links": ["https://devpost.com/software/hiv-and-her", "/HIVandHer_SignedRelease.apk"],
 	},
 	{
 		"id": "prince-kong",

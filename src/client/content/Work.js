@@ -43,6 +43,7 @@ function WorkItem(props) {
 		if (url.includes("github.com")) innerElement = "GitHub";
 		else if (url.includes("apple.com")) innerElement = "iOS";
 		else if (url.includes("play.google.com")) innerElement = "Android";
+		else if (url.includes(".apk")) innerElement = "Download APK";
 
 		return (
 			<BoxButtonA color={props.color} label={innerElement} href={url} target="_blank" />
