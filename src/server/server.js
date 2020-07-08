@@ -10,6 +10,10 @@ app.use(express.static(filePath), function (req, res, next){
     next();
 });
 
+app.get('/legal/privacy', function (req, res){
+    res.redirect('/privacy');
+});
+
 app.get('*', function (req, res){
     res.sendFile(path.join(__dirname, '/../../dist/index.html'))
 });
