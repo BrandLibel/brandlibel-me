@@ -67,6 +67,13 @@ a {
 a:hover {
     color: var(--color-box-orange);
 }
+.clearBoxLink {
+    transition: none;
+}
+.clearBoxLink:hover {
+    color: var(--color-brandlibel-blue);
+    text-decoration: underline;
+}
 img {
     max-width: 100%;
     height: auto;
@@ -262,5 +269,8 @@ iframe {
     background-color: rgba(0,0,0,0);
 }
 .bannerImage {
+    object-fit: cover;
+}
+.boxImageFree {
     object-fit: cover;
 }
