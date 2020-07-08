@@ -173,6 +173,10 @@ video {
 iframe {
     max-width: 90%;
 }
+#iFramePrinceKong {
+    width: 640px;
+    height: 832px;
+}
 .fb-like iframe {
     max-width: 100%;
 }
