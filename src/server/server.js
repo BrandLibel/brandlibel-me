@@ -10,6 +10,22 @@ app.use(express.static(filePath), function (req, res, next){
     next();
 });
 
+app.get('/pathfinder', function (req, res){
+    res.redirect('/work');
+});
+
+app.get('/moody', function (req, res){
+    res.redirect('/work');
+});
+
+app.get('/level-editor', function (req, res){
+    res.redirect('/work');
+});
+
+app.get('/journey', function (req, res){
+    res.redirect('/work');
+});
+
 app.get('/legal/privacy', function (req, res){
     res.redirect('/privacy');
 });
