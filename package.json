@@ -13,7 +13,7 @@
     "url": "https://github.com/BrandLibel/brandlibel-me"
   },
   "author": "Brandon Li",
-  "license": "BSD-4-Clause",
+  "license": "GPL-3.0-only",
   "homepage": "https://brandlibel.me",
   "dependencies": {
     "copy-webpack-plugin": "^6.0.2",
