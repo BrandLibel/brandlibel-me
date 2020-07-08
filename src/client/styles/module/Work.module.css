@@ -1,0 +1,29 @@
+.projectNameLink {
+	color: var(--color-white);
+}
+.projectNameLink:hover {
+	color: var(--color-white);
+    text-decoration: underline;
+}
+.skillList {
+	margin: 0;
+	display: inline-block;
+}
+.skillListItem {
+	float: left;
+    list-style-position: inside;
+    list-style-type: disc;
+    margin-right: 1rem;
+}
+.boxHeader {
+	margin-top: 1.5rem;
+	display: inline-block;
+}
+.boxDate {
+	margin-top: 1.5rem;
+	float: right;
+	text-align: right;
+}
+.bannerImage {
+	margin-top: 2rem;
+}

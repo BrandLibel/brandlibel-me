@@ -104,7 +104,8 @@ ul.textList {
     display: inline-block;
     text-align: center;
     font-weight: medium;
-    font-size: 1.5rem;
+    margin-right: 1rem;
+    font-size: 1.8rem;
     padding: .5rem 1rem;
     background-color: #2DADD6;
     border-style: none;
@@ -244,7 +245,7 @@ iframe {
 }
 .boxImageTint {
     position: absolute;
-    background-color: #2DADD6AA;
+    background-color: #2DADD655;
     width: 100%;
     height: 100%;
     min-height: 600px;
@@ -255,6 +256,19 @@ iframe {
 }
 .boxImage {
     min-height: 600px;
+    object-fit: cover;
+}
+.bannerImageTint {
+    position: absolute;
+    background-color: #2DADD655;
+    width: 768px;
+    height: 260px;
+    transition: 0.4s ease-in-out;
+}
+.bannerImageTint:hover {
+    background-color: rgba(0,0,0,0);
+}
+.bannerImage {
     object-fit: cover;
 }
 .boxImageFree {

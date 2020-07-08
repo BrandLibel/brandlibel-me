@@ -2,3 +2,4 @@ node_modules/
 dist/
 src/client/root/*
 !src/client/root/INFO.txt
+!src/client/root/*.APK

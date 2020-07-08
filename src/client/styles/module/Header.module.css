@@ -17,7 +17,7 @@
     
 }
 .logoContainer {
-    padding: 0 1.25rem;
+    margin-left: 4em;
     vertical-align: middle;
 }
 .logoImg {
@@ -27,6 +27,7 @@
 }
 
 .nav {
+    margin-right: 4em;
     vertical-align: middle;
     float: right;
 }
