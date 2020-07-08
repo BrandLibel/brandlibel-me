@@ -4,7 +4,7 @@ export default function Privacy() {
     return (
         <div>
             <h1>Privacy Policy</h1>
-            <p>Our Privacy Policy was last updated and posted on July 30, 2020. It governs the privacy terms of our Website, located at https://brandlibel.me, sub-domains, and any web-based and mobile applications (collectively, &quot;Website&quot;), as owned and operated by BrandLibel. Any capitalized terms not defined in our Privacy Policy, have the meaning as specified in our Terms of Service.</p>
+            <p>Our Privacy Policy was last updated and posted on July 8, 2020. It governs the privacy terms of our Website, located at https://brandlibel.me, sub-domains, and any web-based and mobile applications (collectively, &quot;Website&quot;), as owned and operated by BrandLibel. Any capitalized terms not defined in our Privacy Policy, have the meaning as specified in our Terms of Service.</p>
             <p>Your privacy is very important to us. Accordingly, we have developed this Policy in order for you to understand how we collect, use, communicate and disclose and make use of personal information. We use your Personal Information only for providing and improving the Website. By using the Website, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible at https://brandlibel.me. The following outlines our privacy policy.</p>
             <ul>
                 <li>Before or at the time of collecting personal information, we will identify the purposes for which information is being collected.</li>
