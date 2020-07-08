@@ -2,6 +2,7 @@ import React from 'react';
 import Box from "./components/Box";
 import imgPathFace from "../data/img/brandon_face_600.png";
 import imgPathGate from "../data/img/gate.png";
+import imgPathLaptop from "../data/img/laptop.png";
 
 export default class About extends React.Component {
 	render() {
@@ -12,7 +13,7 @@ export default class About extends React.Component {
 						<h1>About Brandon</h1>
 						<p>I am Brandon Li, a full stack developer based in Brooklyn.</p>
 						<p>I started to teach myself to program in 2011 when I was in high school.</p>
-						<p>I joined coding competitions and <a href="https://devpost.com/software/hiv-and-her">won an honorable mention</a> in a game development competition commissioned by the CDC.</p>
+						<p>I joined coding competitions and <a className="clearBoxLink" href="https://devpost.com/software/hiv-and-her">won an honorable mention</a> in a game development competition commissioned by the CDC.</p>
 					</Box>
 					
 					<img className="boxImage boxRight"
@@ -31,6 +32,9 @@ export default class About extends React.Component {
 						<p>I enjoy building and shipping great products and writing quality code. I am comfortable with all stages of development, from design to release.</p>
 						<p>My most recent employment is at Bundil as an Android Developer. I worked on developing the core functionality of the Android app.</p>
 					</Box>
+
+					<img className="boxImageFree boxRight"
+						src={imgPathLaptop} />
 				</div>
 			</div>
 		);
