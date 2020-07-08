@@ -3,3 +3,4 @@ dist/
 src/client/root/*
 !src/client/root/INFO.txt
 !src/client/root/*.APK
+!src/client/root/game

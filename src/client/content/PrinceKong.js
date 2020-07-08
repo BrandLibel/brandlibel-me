@@ -7,6 +7,9 @@ export default function PrinceKong() {
             <Box color={global.COLORS.CLEAR} wide>
                 <h1>Prince Kong</h1>
             </Box>
+            <Box color={global.COLORS.CLEAR} wide>
+                <iframe src="/game/prince-kong/index.html"></iframe>
+            </Box>
         </div>
     );
 }
