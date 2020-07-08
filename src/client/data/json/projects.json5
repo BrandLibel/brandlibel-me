@@ -47,7 +47,7 @@
 		"date": "March 2014",
 		"description": "A colorful and abstract educational game about HIV prevention. Won honorable mention in CDC's game competition.",
 		"tech": ["Java", "Android"],
-		"links": ["https://devpost.com/software/hiv-and-her", "/HIVandHer_SignedRelease.apk"],
+		"links": [ "/HIVandHer_SignedRelease.apk", "https://devpost.com/software/hiv-and-her"],
 	},
 	{
 		"id": "prince-kong",
@@ -57,6 +57,6 @@
 		"date": "October 2013",
 		"description": "Climb the Empire State Building. Won the grand prize in a 48-hour game jam.",
 		"tech": ["HTML5", "Javascript", "Tresensa Game Engine"],
-		"links": ["/prince-kong"],
+		"links": ["/prince-kong", "https://devpost.com/software/prince-kong"],
 	},
 ]
