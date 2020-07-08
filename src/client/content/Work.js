@@ -46,6 +46,7 @@ function WorkItem(props) {
 		else if (url.includes("play.google.com")) innerElement = "Android";
 		else if (url.includes(".apk")) innerElement = "Download APK";
 		else if (url.includes("devpost.com")) innerElement = "See Contest Entry";
+		else if (url.includes("ninjam.io") || url.includes("prince-kong")) innerElement = "Play (Desktop Browser)";
 
 		return (
 			<BoxButtonA color={props.color} label={innerElement} href={url} target="_blank" />
