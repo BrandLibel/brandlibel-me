@@ -1,6 +1,7 @@
 import React from 'react';
 import Box from "./components/Box";
 import { BoxButtonA } from "./components/Button";
+import { BannerTintImage } from "./components/Image";
 import styles from "../styles/module/Work.module.css";
 
 import jsonProjects from "../data/json/projects.json5";
@@ -43,6 +44,7 @@ function WorkItem(props) {
 		if (url.includes("github.com")) innerElement = "GitHub";
 		else if (url.includes("apple.com")) innerElement = "iOS";
 		else if (url.includes("play.google.com")) innerElement = "Android";
+		else if (url.includes(".apk")) innerElement = "Download APK";
 
 		return (
 			<BoxButtonA color={props.color} label={innerElement} href={url} target="_blank" />
@@ -56,7 +58,7 @@ function WorkItem(props) {
 			key={props.id}
 		>
 			<h2 className={styles.boxHeader}><a className={styles.projectNameLink} href={props.homepage} target="_blank">{props.name}</a></h2><p className={styles.boxDate}>{props.date}</p>
-			<p className={styles.bannerImage}><a href={props.homepage} target="_blank"><img src={idToPath(props.id)}></img></a></p>
+			<p className={styles.bannerImage}><BannerTintImage href={props.homepage} src={idToPath(props.id)}/></p>
 			<p>{props.description}</p>
 			<p><ul className={styles.skillList}>{techList}</ul></p>
 			<p>{linkList}</p>
