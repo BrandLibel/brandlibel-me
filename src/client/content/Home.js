@@ -17,7 +17,7 @@ export default class Home extends React.Component {
 				</Box>
 
 				<Box color={global.COLORS.ORANGE} left>
-					<h1>Ninjam.io</h1>
+					<h2>Ninjam.io</h2>
 					<p>A real-time multiplayer ninja action game.</p>
 					<p>Node.js, Websockets, Express.js, MySQL, Redis, Pug, and Pixi.js</p>
 					<p>Play as a guest, or create an account to have your stats tracked!</p>
