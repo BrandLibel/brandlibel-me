@@ -27,6 +27,7 @@ const Content = () => {
 				<Route path="/prince-kong" component={PrinceKong} />
 				<Route component={NotFound} />
 			</Switch>
+			<div className = "push"></div>
 		</div>
 	);
 }
