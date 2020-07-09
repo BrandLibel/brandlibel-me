@@ -27,7 +27,6 @@ const Content = () => {
 				<Route path="/prince-kong" component={PrinceKong} />
 				<Route component={NotFound} />
 			</Switch>
-			<div className = "push"></div>
 		</div>
 	);
 }
@@ -38,7 +37,6 @@ export default class Main extends React.Component {
 			<BrowserRouter>
 				<Header />
 				<Content />
-				<Footer />
 			</BrowserRouter>
 		);
 	}
