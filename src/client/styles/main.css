@@ -300,6 +300,10 @@ iframe {
 }
 .bannerImage {
     object-fit: cover;
+    opacity: 80%;
+}
+.bannerImage:hover {
+    opacity: 100%;
 }
 .boxImageFree {
     object-fit: cover;
