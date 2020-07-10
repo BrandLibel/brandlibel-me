@@ -13,6 +13,9 @@ app.use(express.static(filePath), function (req, res, next){
 app.get('/indefinite', function(req, res){
     res.sendFile(path.join(__dirname, '/../../dist/indefinite.html'));
 });
+app.get('/indefinite-love', function(req, res){
+    res.sendFile(path.join(__dirname, '/../../dist/indefinite-love.html'));
+});
 
 app.get('/pathfinder', function (req, res){
     res.redirect('/work');
