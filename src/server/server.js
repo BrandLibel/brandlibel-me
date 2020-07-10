@@ -23,10 +23,6 @@ else {
 
 const filePath = path.join(__dirname, '/../../dist');
 
-app.use(express.static(filePath), function (req, res, next){
-    next();
-});
-
 app.use (function (req, res, next) {
     if (req.secure) {
         next();
@@ -34,6 +30,10 @@ app.use (function (req, res, next) {
         // request was via http, so redirect to https
         res.redirect('https://' + req.headers.host + req.url);
     }
+});
+
+app.use(express.static(filePath), function (req, res, next){
+    next();
 });
 
 app.get('/indefinite', function(req, res){
