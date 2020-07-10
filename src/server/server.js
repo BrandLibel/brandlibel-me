@@ -4,6 +4,23 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
+// HTTP
+let hyperTextProtocol;
+var server;
+if (IS_LOCAL){
+    hyperTextProtocol = require('http');
+    server = hyperTextProtocol.Server(app);
+}
+else {
+    var fs = require('fs');
+    var https = require('https');
+    hyperTextProtocol = https;
+    server = https.createServer({ 
+        key: fs.readFileSync('/etc/letsencrypt/live/brandlibel.me/privkey.pem'),
+        cert: fs.readFileSync('/etc/letsencrypt/live/brandlibel.me/fullchain.pem') 
+    }, app);
+}
+
 const filePath = path.join(__dirname, '/../../dist');
 
 app.use(express.static(filePath), function (req, res, next){
@@ -41,6 +58,6 @@ app.get('*', function (req, res){
     res.sendFile(path.join(__dirname, '/../../dist/index.html'))
 });
 
-app.listen(3000);
-
-console.log('Hello World');
+server.listen(3000, () => {
+    console.log('Hello there! Server listening on port 3000');
+});
