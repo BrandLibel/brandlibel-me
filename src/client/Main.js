@@ -8,7 +8,6 @@ import Privacy from "./content/Privacy";
 import PrinceKong from "./content/PrinceKong"
 import NotFound from "./content/NotFound";
 import Header from "./content/components/Header"
-import Footer from "./content/components/Footer"
 
 import {
 	Route,
