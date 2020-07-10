@@ -27,6 +27,15 @@ app.use(express.static(filePath), function (req, res, next){
     next();
 });
 
+app.use (function (req, res, next) {
+    if (req.secure) {
+        next();
+    } else {
+        // request was via http, so redirect to https
+        res.redirect('https://' + req.headers.host + req.url);
+    }
+});
+
 app.get('/indefinite', function(req, res){
     res.sendFile(path.join(__dirname, '/../../dist/indefinite.html'));
 });
