@@ -8,7 +8,6 @@ import Privacy from "./content/Privacy";
 import PrinceKong from "./content/PrinceKong"
 import NotFound from "./content/NotFound";
 import Header from "./content/components/Header"
-import Footer from "./content/components/Footer"
 
 import {
 	Route,
@@ -16,16 +15,35 @@ import {
 	Switch
 } from "react-router-dom";
 
+const Page = (props) => {
+	document.title = props.title;
+	const PageComponent = props.component;
+	
+	return <PageComponent />
+}
+
 const Content = () => {
 	return (
 		<div className="content">
 			<Switch>
-				<Route exact path="/" component={Home} />
-				<Route path="/about" component={About} />
-				<Route path="/work" component={Work} />
-				<Route path="/privacy" component={Privacy} />
-				<Route path="/prince-kong" component={PrinceKong} />
-				<Route component={NotFound} />
+				<Route exact path="/" render={props => (
+					<Page {...props} component={Home} title="Brandon Li | Full Stack Developer" />
+				)}/>
+				<Route path="/about" render={props => (
+					<Page {...props} component={About} title="About Brandon" />
+				)}/>
+				<Route path="/work" render={props => (
+					<Page {...props} component={Work} title="Projects and Work" />
+				)}/>
+				<Route path="/privacy" render={props => (
+					<Page {...props} component={Privacy} title="Privacy Policy" />
+				)}/>
+				<Route path="/prince-kong" render={props => (
+					<Page {...props} component={PrinceKong} title="Prince Kong" />
+				)}/>
+				<Route render={props => (
+					<Page {...props} component={NotFound} title="Error 404" />
+				)}/>
 			</Switch>
 		</div>
 	);
