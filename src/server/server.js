@@ -23,17 +23,6 @@ else {
 
 const filePath = path.join(__dirname, '/../../dist');
 
-app.use (function (req, res, next) {
-    if (req.secure) {
-        next();
-    } else {
-        // request was via http, so redirect to https
-        let redirectURL = 'https://' + req.headers.host + req.url;
-        res.redirect(redirectURL);
-        console.log("https redirection:", redirectURL);
-    }
-});
-
 app.use(express.static(filePath), function (req, res, next){
     next();
 });
