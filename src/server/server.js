@@ -28,7 +28,9 @@ app.use (function (req, res, next) {
         next();
     } else {
         // request was via http, so redirect to https
-        res.redirect('https://' + req.headers.host + req.url);
+        let redirectURL = 'https://' + req.headers.host + req.url;
+        res.redirect(redirectURL);
+        console.log("https redirection:", redirectURL);
     }
 });
 
