@@ -19,15 +19,63 @@ html {
     --color-header: #3D3C38;
     font-size: 100%;
     font-family: azo-sans-web, sans-serif;
+
+    height: 100%;
 }
 body {
     margin: 0;
     color: var(--color-text);
     background-color: var(--color-bg);
+    min-height: 100%;
+    height: 100%;
+}
+#root {
+    height: 100%;
 }
 .content {
-    margin-top: 2.4em;
     margin-bottom: 2.4em;
+
+    margin: 0 auto -4em !important;
+    margin-top: 2.4em !important;
+}
+footer, .push {
+    padding: 1.25rem 0;
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    margin: auto auto;
+
+    height: 4em !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+.footerContainer {
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 2rem;
+    color: var(--color-header-text);
+    background-color: var(--color-header);
+}
+.footerContent {
+   margin: 0 4rem;
+}
+footer a {
+    color: #eeeeee;
+    text-decoration: underline;
+}
+footer ul {
+    float: left;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+footer p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+.footerItems {
+    width: 75%;
+    margin: auto;
 }
 .big0 {
     font-weight: normal;
@@ -124,31 +172,6 @@ section {
     padding-top: 2%;
     padding-bottom: 2%;
 }
-
-.footerContainer {
-    line-height: 1.5rem;
-    color: #eeeeee;
-    background-color: #222222;
-    padding: 1rem;
-}
-footer a {
-    color: #eeeeee;
-    text-decoration: underline;
-}
-footer ul {
-    float: left;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-footer p {
-    font-size: 1rem;
-    line-height: 1.5rem;
-}
-.footerItems {
-    width: 75%;
-    margin: auto;
-}
 .infoItems {
     width: 75%;
     margin: auto;
@@ -180,6 +203,14 @@ iframe {
 .fb-like iframe {
     max-width: 100%;
 }
+.testGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-gap: 1.5rem;
+}
+.testGridItem {
+    background-color: #1c57b5;
+}
 
 .boxGrid {
     position: relative;
@@ -187,16 +218,16 @@ iframe {
     width: 100%;
     margin: auto auto;
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-row: auto;
 }
 
 .boxLeft {
-    grid-column: 1 / 2;
+    
 }
 
 .boxRight {
-    grid-column: 2 / 3;
+    
 }
 
 .boxWide {
@@ -274,6 +305,10 @@ iframe {
 }
 .bannerImage {
     object-fit: cover;
+    opacity: 80%;
+}
+.bannerImage:hover {
+    opacity: 100%;
 }
 .boxImageFree {
     object-fit: cover;

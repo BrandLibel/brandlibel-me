@@ -2,12 +2,12 @@
 	{
 		"id": "brandlibel-me",
 		"name": "BrandLibel.me",
-		"homepage": "https://brandlibel.me",
+		"homepage": "/",
 		"major": true,
 		"date": "July 2020",
 		"description": "My personal website (you're on it) uses React and is a hybrid single-page / multi-page application.",
 		"tech": ["React.js", "Node.js", "Express.js", "Webpack"],
-		"links": ["https://brandlibel.me", "https://github.com/brandLibel/brandlibel-me"],
+		"links": ["/", "https://github.com/brandLibel/brandlibel-me"],
 	},
 	{
 		"id": "ninjam-io",

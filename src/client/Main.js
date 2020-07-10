@@ -37,7 +37,6 @@ export default class Main extends React.Component {
 			<BrowserRouter>
 				<Header />
 				<Content />
-				<Footer />
 			</BrowserRouter>
 		);
 	}
