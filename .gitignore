@@ -7,3 +7,5 @@ src/client/root/*
 !src/client/root/data
 !src/client/root/indefinite.html
 !src/client/root/indefinite-love.html
+!src/client/root/styles
+!src/client/root/*.css
