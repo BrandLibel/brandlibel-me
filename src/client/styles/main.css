@@ -203,6 +203,14 @@ iframe {
 .fb-like iframe {
     max-width: 100%;
 }
+.testGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-gap: 1.5rem;
+}
+.testGridItem {
+    background-color: #1c57b5;
+}
 
 .boxGrid {
     position: relative;
@@ -210,16 +218,16 @@ iframe {
     width: 100%;
     margin: auto auto;
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-row: auto;
 }
 
 .boxLeft {
-    grid-column: 1 / 2;
+    
 }
 
 .boxRight {
-    grid-column: 2 / 3;
+    
 }
 
 .boxWide {
