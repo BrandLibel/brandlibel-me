@@ -1,4 +1,4 @@
-const IS_LOCAL = true;
+const IS_LOCAL = false;
 
 const express = require('express');
 const path = require('path');
