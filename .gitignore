@@ -3,3 +3,9 @@ dist/
 src/client/root/*
 !src/client/root/INFO.txt
 !src/client/root/*.APK
+!src/client/root/game
+!src/client/root/data
+!src/client/root/indefinite.html
+!src/client/root/indefinite-love.html
+!src/client/root/styles
+!src/client/root/*.css

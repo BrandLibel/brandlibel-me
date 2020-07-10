@@ -63,6 +63,7 @@ module.exports = {
                 },
                 { from: './src/client/favicon.ico' },
                 { from: './src/client/favicon-indefinite.ico' },
+                { from: './src/client/favicon-indefinite-love.ico' },
             ]
         })
     ]

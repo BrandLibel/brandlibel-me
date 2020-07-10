@@ -10,6 +10,33 @@ app.use(express.static(filePath), function (req, res, next){
     next();
 });
 
+app.get('/indefinite', function(req, res){
+    res.sendFile(path.join(__dirname, '/../../dist/indefinite.html'));
+});
+app.get('/indefinite-love', function(req, res){
+    res.sendFile(path.join(__dirname, '/../../dist/indefinite-love.html'));
+});
+
+app.get('/pathfinder', function (req, res){
+    res.redirect('/work');
+});
+
+app.get('/moody', function (req, res){
+    res.redirect('/work');
+});
+
+app.get('/level-editor', function (req, res){
+    res.redirect('/work');
+});
+
+app.get('/journey', function (req, res){
+    res.redirect('/work');
+});
+
+app.get('/legal/privacy', function (req, res){
+    res.redirect('/privacy');
+});
+
 app.get('*', function (req, res){
     res.sendFile(path.join(__dirname, '/../../dist/index.html'))
 });

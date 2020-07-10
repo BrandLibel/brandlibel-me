@@ -1,13 +1,14 @@
 import React from "react";
-import styles from '../../styles/module/Header.module.css';
 
 
 export default class Footer extends React.Component {
     render() {
 		return (
-			<div className={`${styles.header}`}>
-				<p></p>
-			</div>
+			<footer className="footerContainer">
+				<div className="footerContent">
+					<p>My Footer WEBSITE</p>
+				</div>
+			</footer>
 		);
 	}
 }

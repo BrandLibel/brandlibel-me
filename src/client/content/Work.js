@@ -45,9 +45,11 @@ function WorkItem(props) {
 		else if (url.includes("apple.com")) innerElement = "iOS";
 		else if (url.includes("play.google.com")) innerElement = "Android";
 		else if (url.includes(".apk")) innerElement = "Download APK";
+		else if (url.includes("devpost.com")) innerElement = "See Contest Entry";
+		else if (url.includes("ninjam.io") || url.includes("prince-kong")) innerElement = "Play (HTML5)";
 
 		return (
-			<BoxButtonA color={props.color} label={innerElement} href={url} target="_blank" />
+			<BoxButtonA color={props.color} label={innerElement} href={url} target={url == "/" ? "_self" : "_blank"} />
 		);
 	});
 
@@ -57,8 +59,14 @@ function WorkItem(props) {
 			wide spaced
 			key={props.id}
 		>
-			<h2 className={styles.boxHeader}><a className={styles.projectNameLink} href={props.homepage} target="_blank">{props.name}</a></h2><p className={styles.boxDate}>{props.date}</p>
-			<p className={styles.bannerImage}><BannerTintImage href={props.homepage} src={idToPath(props.id)}/></p>
+			<h2 className={styles.boxHeader}>
+				<a className={styles.projectNameLink} href={props.homepage} target={props.homepage == "/" ? "_self" : "_blank"}>
+					{props.name}
+				</a>
+			</h2><p className={styles.boxDate}>{props.date}</p>
+			<p className={styles.bannerImage}>
+				<BannerTintImage href={props.homepage} src={idToPath(props.id)} target={props.homepage == "/" ? "_self" : "_blank"} />
+			</p>
 			<p>{props.description}</p>
 			<p><ul className={styles.skillList}>{techList}</ul></p>
 			<p>{linkList}</p>
