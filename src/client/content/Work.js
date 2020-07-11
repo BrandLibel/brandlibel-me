@@ -14,6 +14,9 @@ import imgPathHiv from "../data/img/game_hiv.png";
 import imgPathPrince from "../data/img/game_prince.png";
 import imgPathInProgress from "../data/img/game_inProgress.png";
 
+const SORT_ORDER_DESC = 0;
+const SORT_ORDER_ASC = 1;
+
 function idToPath(projectId) {
 	switch (projectId) {
 		case "brandlibel-me": return imgPathWebsite;
@@ -23,6 +26,18 @@ function idToPath(projectId) {
 		case "project-hiv": return imgPathHiv;
 		case "prince-kong": return imgPathPrince;
 		default: return imgPathInProgress;
+	}
+}
+
+class SortButton extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			order: SORT_ORDER_DESC
+		}
+	}
+	render() {
+		return <a href="#" className="clearBoxLink">{this.props.label}</a>
 	}
 }
 
@@ -107,6 +122,7 @@ export default function Work() {
 			<div className="boxGrid">
 				<Box color={global.COLORS.CLEAR} wide>
 					<h1>Projects and Work</h1>
+					<p>Sort by: <SortButton label="Featured"/> | <SortButton label="Date"/> | <SortButton label="Alphabetical"/></p>
 				</Box>
 			</div>
 			<WorkList />
