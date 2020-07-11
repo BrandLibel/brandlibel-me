@@ -14,8 +14,8 @@ import imgPathHiv from "../data/img/game_hiv.png";
 import imgPathPrince from "../data/img/game_prince.png";
 import imgPathInProgress from "../data/img/game_inProgress.png";
 
-const SORT_ORDER_DESC = 0;
-const SORT_ORDER_ASC = 1;
+const ORDER_DESC = 0;
+const ORDER_ASC = 1;
 
 function idToPath(projectId) {
 	switch (projectId) {
@@ -30,14 +30,21 @@ function idToPath(projectId) {
 }
 
 class SortButton extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
-			order: SORT_ORDER_DESC
+			order: ORDER_DESC,
+			selected: props.initSelected
 		}
 	}
+	select() {
+
+	}
 	render() {
-		return <a href="#" className="clearBoxLink">{this.props.label}</a>
+		let innerHTML = <span>{this.props.label}&#8593;</span>
+		if (this.state.order == ORDER_DESC) innerHTML = <span>{this.props.label}&#8595;</span>
+
+		return <a href="#" className="clearBoxLink">{innerHTML}</a>;
 	}
 }
 
@@ -122,7 +129,7 @@ export default function Work() {
 			<div className="boxGrid">
 				<Box color={global.COLORS.CLEAR} wide>
 					<h1>Projects and Work</h1>
-					<p>Sort by: <SortButton label="Featured"/> | <SortButton label="Date"/> | <SortButton label="Alphabetical"/></p>
+					<p>Sort by: <SortButton label="Featured" initSelected/> | <SortButton label="Date"/> | <SortButton label="Alphabetical"/></p>
 				</Box>
 			</div>
 			<WorkList />
