@@ -32,7 +32,7 @@ class SortButtonList extends React.Component {
 	}
 	render() {
 		return (
-			<p>Sort by: <SortButton label="Featured" list={this.props.work} sortState={this.props.sortState} i={0} /> | <SortButton label="Date" list={this.props.work} sortState={this.props.sortState} i={1} /> | <SortButton label="Alphabetical" list={this.props.work} sortState={this.props.sortState} i={2} /></p>
+			<p>Sort by: <SortButton label="Coolness" list={this.props.work} sortState={this.props.sortState} i={0} /> | <SortButton label="Date" list={this.props.work} sortState={this.props.sortState} i={1} /> | <SortButton label="Name" list={this.props.work} sortState={this.props.sortState} i={2} /></p>
 		);
 	}
 }
@@ -121,7 +121,7 @@ class WorkList extends React.Component {
 			switch (selectedIndex){
 				case 0:
 					// Coolness
-					return -1;
+					return 0;
 				case 1:
 					// Date
 					let dateA = projA.dateCode;
