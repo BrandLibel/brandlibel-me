@@ -9,6 +9,7 @@
     display: table;
     width: 100%;
 
+    min-width: 510px;
     max-width: 1200px;
     position: relative;
     margin: auto auto;
