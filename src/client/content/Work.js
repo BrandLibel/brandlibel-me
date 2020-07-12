@@ -26,10 +26,26 @@ function idToPath(projectId) {
 	}
 }
 
-function SortButtonList() {
-	return (
-		<p>Sort by: <SortButton label="Featured" initSelected/> | <SortButton label="Date"/> | <SortButton label="Alphabetical"/></p>
-	);
+class SortButtonList extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			selections: [true, false, false],
+		};
+		this.setNewSelection = this.setNewSelection.bind(this);
+	}
+	setNewSelection(index) {
+		this.setState(() => {
+			let newSelections = [false, false, false];
+			newSelections[index] = true;
+			return {selections: newSelections};
+		});
+	}
+	render() {
+		return (
+			<p>Sort by: <SortButton label="Featured" list={this} selections={this.state.selections} i={0}/> | <SortButton label="Date" list={this} selections={this.state.selections} i={1} /> | <SortButton label="Alphabetical" list={this} selections={this.state.selections} i={2}/></p>
+		);
+	}
 }
 
 class SortButton extends React.Component {
@@ -39,10 +55,14 @@ class SortButton extends React.Component {
 			orderDesc: true,
 			selected: props.initSelected
 		};
-		this.onSelect = this.onSelect.bind(this);
+		this.onClick = this.onClick.bind(this);
 	}
-	onSelect() {
-		console.log("onSelect");
+	isSelected() {
+		return this.props.selections[this.props.i]
+	}
+	onClick() {
+		this.props.list.setNewSelection(this.props.i);
+
 		this.setState((prevState) => {
 			if (prevState.selected){
 				return { orderDesc: !prevState.orderDesc, selected: prevState.selected}
@@ -54,13 +74,12 @@ class SortButton extends React.Component {
 	}
 	render() {
 		let innerHTML = <span>{this.props.label}</span>
-		if (this.state.selected){
+		if (this.isSelected()){
 			if (this.state.orderDesc) innerHTML = <span>{this.props.label}&#8595;</span>
 			else innerHTML = <span>{this.props.label}&#8593;</span>
-			
 		}
 
-		return <a href="#" className="clearBoxLink" onClick={this.onSelect}>{innerHTML}</a>;
+		return <a href="#" className="clearBoxLink" onClick={this.onClick}>{innerHTML}</a>;
 	}
 }
 
