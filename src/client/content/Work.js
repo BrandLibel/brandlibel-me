@@ -116,7 +116,24 @@ class WorkList extends React.Component {
 	}
 	render() {
 		let sortedProjects = jsonProjects.sort((projA, projB) => {
-			//
+			let selectedIndex = this.props.sortState.selected;
+			let isDescending = this.props.sortState.orderDesc[ selectedIndex ];
+			switch (selectedIndex){
+				case 0:
+					// Coolness
+					return -1;
+				case 1:
+					// Date
+					return 1;
+				case 2:
+					// Name
+					let nameA = projA.name.toUpperCase();
+					let nameB = projB.name.toUpperCase();
+					// bitwise ^ XOR will negate depending on isDescending
+					if ((nameA > nameB) ^ isDescending) return -1;
+					if ((nameA < nameB) ^ isDescending) return 1;
+					return 0;
+			}
 		});
 		let workItems = sortedProjects.map((project, index) => {
 			let boxColor = index % 2 == 0 ? global.COLORS.BLUE : global.COLORS.ORANGE
