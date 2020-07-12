@@ -14,9 +14,6 @@ import imgPathHiv from "../data/img/game_hiv.png";
 import imgPathPrince from "../data/img/game_prince.png";
 import imgPathInProgress from "../data/img/game_inProgress.png";
 
-const ORDER_DESC = 0;
-const ORDER_ASC = 1;
-
 function idToPath(projectId) {
 	switch (projectId) {
 		case "brandlibel-me": return imgPathWebsite;
@@ -29,22 +26,41 @@ function idToPath(projectId) {
 	}
 }
 
+function SortButtonList() {
+	return (
+		<p>Sort by: <SortButton label="Featured" initSelected/> | <SortButton label="Date"/> | <SortButton label="Alphabetical"/></p>
+	);
+}
+
 class SortButton extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			order: ORDER_DESC,
+			orderDesc: true,
 			selected: props.initSelected
-		}
+		};
+		this.onSelect = this.onSelect.bind(this);
 	}
-	select() {
-
+	onSelect() {
+		console.log("onSelect");
+		this.setState((prevState) => {
+			if (prevState.selected){
+				return { orderDesc: !prevState.orderDesc, selected: prevState.selected}
+			}
+			else {
+				return { selected: !prevState.selected}
+			}
+		});
 	}
 	render() {
-		let innerHTML = <span>{this.props.label}&#8593;</span>
-		if (this.state.order == ORDER_DESC) innerHTML = <span>{this.props.label}&#8595;</span>
+		let innerHTML = <span>{this.props.label}</span>
+		if (this.state.selected){
+			if (this.state.orderDesc) innerHTML = <span>{this.props.label}&#8595;</span>
+			else innerHTML = <span>{this.props.label}&#8593;</span>
+			
+		}
 
-		return <a href="#" className="clearBoxLink">{innerHTML}</a>;
+		return <a href="#" className="clearBoxLink" onClick={this.onSelect}>{innerHTML}</a>;
 	}
 }
 
@@ -129,7 +145,7 @@ export default function Work() {
 			<div className="boxGrid">
 				<Box color={global.COLORS.CLEAR} wide>
 					<h1>Projects and Work</h1>
-					<p>Sort by: <SortButton label="Featured" initSelected/> | <SortButton label="Date"/> | <SortButton label="Alphabetical"/></p>
+					<SortButtonList />
 				</Box>
 			</div>
 			<WorkList />
