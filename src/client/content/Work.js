@@ -26,6 +26,42 @@ function idToPath(projectId) {
 	}
 }
 
+class SortButtonList extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		return (
+			<p>Sort by: <SortButton label="Coolness" list={this.props.work} sortState={this.props.sortState} i={0} /> | <SortButton label="Date" list={this.props.work} sortState={this.props.sortState} i={1} /> | <SortButton label="Name" list={this.props.work} sortState={this.props.sortState} i={2} /></p>
+		);
+	}
+}
+
+class SortButton extends React.Component {
+	constructor(props) {
+		super(props);
+		this.onClick = this.onClick.bind(this);
+	}
+	isMyOrderDesc() {
+		return this.props.sortState.orderDesc[this.props.i];
+	}
+	isSelected() {
+		return this.props.sortState.selected == this.props.i;
+	}
+	onClick() {
+		this.props.list.setNewSortState(this.props.i);
+	}
+	render() {
+		let innerHTML = <span>{this.props.label}</span>
+		if (this.isSelected()) {
+			if (this.isMyOrderDesc()) innerHTML = <span>{this.props.label}&#8595;</span>
+			else innerHTML = <span>{this.props.label}&#8593;</span>
+		}
+
+		return <a href="#" className="clearBoxLink" onClick={this.onClick}>{innerHTML}</a>;
+	}
+}
+
 function WorkItemTech(props) {
 	return <li className={styles.skillListItem}>{props.text}</li>
 }
@@ -34,7 +70,7 @@ function WorkItem(props) {
 
 	let techList = props.skills.map(skillStr => {
 		return (
-			<WorkItemTech text = {skillStr} />
+			<WorkItemTech text={skillStr} />
 		)
 	});
 
@@ -74,42 +110,103 @@ function WorkItem(props) {
 	);
 }
 
-function WorkList() {
-	let workItems = jsonProjects.map((project, index) => {
-		return (
-			<WorkItem
-				color={
-					index % 2 == 0 ? global.COLORS.BLUE : global.COLORS.ORANGE
-				}
-				key={project.id}
-				id={project.id}
-				name={project.name}
-				description={project.description}
-				date={project.date}
-				homepage={project.homepage}
-				skills={project.tech}
-				links={project.links}
-			>
-			</WorkItem>
-		);
-	});
+class WorkList extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		let selectedIndex = this.props.sortState.selected;
+		let isDescending = this.props.sortState.orderDesc[ selectedIndex ];
 
-	return (
-		<div className="boxGrid">
-			{workItems}
-		</div>
-	);
+		let sortedProjects = jsonProjects.slice();
+
+		// Coolness
+		if (selectedIndex == 0){
+			if (!isDescending) sortedProjects.reverse();
+		}
+		// Date or Name
+		else {
+			sortedProjects = sortedProjects.sort((projA, projB) => {
+				switch (selectedIndex){
+					case 1:
+						// Date
+						let dateA = projA.dateCode;
+						let dateB = projB.dateCode;
+						if ((dateA < dateB) ^ isDescending) return -1;
+						if ((dateA > dateB) ^ isDescending) return 1;
+						return 0;
+					case 2:
+						// Name
+						let nameA = projA.name.toUpperCase();
+						let nameB = projB.name.toUpperCase();
+						// bitwise ^ XOR will negate depending on isDescending
+						if ((nameA > nameB) ^ isDescending) return -1;
+						if ((nameA < nameB) ^ isDescending) return 1;
+						return 0;
+				}
+			});
+		}
+		
+		let workItems = sortedProjects.map((project, index) => {
+			let boxColor = index % 2 == 0 ? global.COLORS.BLUE : global.COLORS.ORANGE
+			return (
+				<WorkItem
+					color={boxColor}
+					key={project.id}
+					id={project.id}
+					name={project.name}
+					description={project.description}
+					date={project.date}
+					homepage={project.homepage}
+					skills={project.tech}
+					links={project.links}
+				>
+				</WorkItem>
+			);
+		});
+		return (
+			<div className="boxGrid">
+				{workItems}
+			</div>
+		);
+	}
 }
 
-export default function Work() {
-	return (
-		<div>
-			<div className="boxGrid">
-				<Box color={global.COLORS.CLEAR} wide>
-					<h1>Projects and Work</h1>
-				</Box>
+export default class Work extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			sortState: {
+				selected: 0,
+				orderDesc: [true, true, true],
+			},
+		};
+		this.setNewSortState = this.setNewSortState.bind(this);
+	}
+	setNewSortState(index) {
+		this.setState(prevState => {
+			let oldSortState = prevState.sortState;
+			let newSortState = {
+				selected: index,
+				orderDesc: oldSortState.orderDesc,
+			};
+			// toggle order only when clicking an already selected button
+			if (oldSortState.selected == index)
+				newSortState.orderDesc[index] = !oldSortState.orderDesc[index];
+			return { sortState: newSortState };
+		});
+	}
+	render() {
+		return (
+			<div>
+				<div className="boxGrid">
+					<Box color={global.COLORS.CLEAR} wide>
+						<h1>Projects and Work</h1>
+						<SortButtonList sortState={this.state.sortState} work={this} />
+					</Box>
+				</div>
+				<WorkList sortState={this.state.sortState} />
 			</div>
-			<WorkList />
-		</div>
-	);
+		);
+	}
 }
