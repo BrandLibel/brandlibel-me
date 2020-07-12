@@ -27,23 +27,12 @@ function idToPath(projectId) {
 }
 
 class SortButtonList extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			selections: [true, false, false],
-		};
-		this.setNewSelection = this.setNewSelection.bind(this);
-	}
-	setNewSelection(index) {
-		this.setState(() => {
-			let newSelections = [false, false, false];
-			newSelections[index] = true;
-			return {selections: newSelections};
-		});
+	constructor(props) {
+		super(props);
 	}
 	render() {
 		return (
-			<p>Sort by: <SortButton label="Featured" list={this} selections={this.state.selections} i={0}/> | <SortButton label="Date" list={this} selections={this.state.selections} i={1} /> | <SortButton label="Alphabetical" list={this} selections={this.state.selections} i={2}/></p>
+			<p>Sort by: <SortButton label="Featured" list={this.props.work} sortState={this.props.sortState} i={0}/> | <SortButton label="Date" list={this.props.work} sortState={this.props.sortState} i={1} /> | <SortButton label="Alphabetical" list={this.props.work} sortState={this.props.sortState} i={2}/></p>
 		);
 	}
 }
@@ -51,31 +40,21 @@ class SortButtonList extends React.Component {
 class SortButton extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			orderDesc: true,
-			selected: props.initSelected
-		};
 		this.onClick = this.onClick.bind(this);
 	}
+	myState() {
+		return this.props.sortState[this.props.i];
+	}
 	isSelected() {
-		return this.props.selections[this.props.i]
+		return this.myState().selected;
 	}
 	onClick() {
-		this.props.list.setNewSelection(this.props.i);
-
-		this.setState((prevState) => {
-			if (prevState.selected){
-				return { orderDesc: !prevState.orderDesc, selected: prevState.selected}
-			}
-			else {
-				return { selected: !prevState.selected}
-			}
-		});
+		this.props.list.setNewSortState(this.props.i);
 	}
 	render() {
 		let innerHTML = <span>{this.props.label}</span>
 		if (this.isSelected()){
-			if (this.state.orderDesc) innerHTML = <span>{this.props.label}&#8595;</span>
+			if (this.myState().orderDesc) innerHTML = <span>{this.props.label}&#8595;</span>
 			else innerHTML = <span>{this.props.label}&#8593;</span>
 		}
 
@@ -158,16 +137,64 @@ function WorkList() {
 	);
 }
 
-export default function Work() {
-	return (
-		<div>
-			<div className="boxGrid">
-				<Box color={global.COLORS.CLEAR} wide>
-					<h1>Projects and Work</h1>
-					<SortButtonList />
-				</Box>
+export default class Work extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			sortState: [
+				{
+					selected: true,
+					orderDesc: true,
+				},
+				{
+					selected: false,
+					orderDesc: true,
+				},
+				{
+					selected: false,
+					orderDesc: true,
+				},
+			],
+		};
+		this.setNewSortState = this.setNewSortState.bind(this);
+	}
+	setNewSortState(index) {
+		this.setState(prevState =>{
+			let oldState = prevState.sortState;
+			let newState = {
+				sortState: [
+					{
+						selected: false,
+						orderDesc: oldState[0].orderDesc,
+					},
+					{
+						selected: false,
+						orderDesc: oldState[1].orderDesc,
+					},
+					{
+						selected: false,
+						orderDesc: oldState[2].orderDesc,
+					},
+				],
+			};
+			newState.sortState[index] = {
+				selected: true,
+				orderDesc: !oldState[index].orderDesc,
+			}
+			return newState;
+		});
+	}
+	render() {
+		return (
+			<div>
+				<div className="boxGrid">
+					<Box color={global.COLORS.CLEAR} wide>
+						<h1>Projects and Work</h1>
+						<SortButtonList sortState={this.state.sortState} work={this}/>
+					</Box>
+				</div>
+				<WorkList sortState={this.state.sortState} />
 			</div>
-			<WorkList />
-		</div>
-	);
+		);
+	}
 }
