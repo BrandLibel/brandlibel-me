@@ -53,12 +53,16 @@ class SortButton extends React.Component {
 	}
 	render() {
 		let innerHTML = <span>{this.props.label}</span>
+
+		if (this.isMyOrderDesc()) innerHTML = <span>{this.props.label}&#8595;</span>
+		else innerHTML = <span>{this.props.label}&#8593;</span>
+
+		let aClassName = "clearBoxLink";
 		if (this.isSelected()) {
-			if (this.isMyOrderDesc()) innerHTML = <span>{this.props.label}&#8595;</span>
-			else innerHTML = <span>{this.props.label}&#8593;</span>
+			aClassName = "clearBoxLinkSelected";
 		}
 
-		return <a href="#" className="clearBoxLink" onClick={this.onClick}>{innerHTML}</a>;
+		return <a href="#" className={aClassName} onClick={this.onClick}>{innerHTML}</a>;
 	}
 }
 

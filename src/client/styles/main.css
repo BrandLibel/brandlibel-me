@@ -122,6 +122,15 @@ a:hover {
     color: var(--color-brandlibel-blue);
     text-decoration: underline;
 }
+.clearBoxLinkSelected {
+    transition: none;
+    color: var(--color-box-orange);
+}
+.clearBoxLinkSelected:hover {
+    transition: none;
+    color: var(--color-box-orange);
+    text-decoration: underline;
+}
 img {
     max-width: 100%;
     height: auto;
@@ -153,6 +162,7 @@ ul.textList {
     text-align: center;
     font-weight: medium;
     margin-right: 1rem;
+    margin-bottom: 1rem;
     font-size: 1.8rem;
     padding: .5rem 1rem;
     background-color: #2DADD6;
