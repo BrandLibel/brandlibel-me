@@ -42,11 +42,11 @@ class SortButton extends React.Component {
 		super(props);
 		this.onClick = this.onClick.bind(this);
 	}
-	myState() {
-		return this.props.sortState[this.props.i];
+	isMyOrderDesc() {
+		return this.props.sortState.orderDesc[this.props.i];
 	}
 	isSelected() {
-		return this.myState().selected;
+		return this.props.sortState.selected == this.props.i;
 	}
 	onClick() {
 		this.props.list.setNewSortState(this.props.i);
@@ -54,7 +54,7 @@ class SortButton extends React.Component {
 	render() {
 		let innerHTML = <span>{this.props.label}</span>
 		if (this.isSelected()) {
-			if (this.myState().orderDesc) innerHTML = <span>{this.props.label}&#8595;</span>
+			if (this.isMyOrderDesc()) innerHTML = <span>{this.props.label}&#8595;</span>
 			else innerHTML = <span>{this.props.label}&#8593;</span>
 		}
 
@@ -115,7 +115,10 @@ class WorkList extends React.Component {
 		super(props);
 	}
 	render() {
-		let workItems = jsonProjects.map((project, index) => {
+		let sortedProjects = jsonProjects.sort((projA, projB) => {
+			//
+		});
+		let workItems = sortedProjects.map((project, index) => {
 			let boxColor = index % 2 == 0 ? global.COLORS.BLUE : global.COLORS.ORANGE
 			return (
 				<WorkItem
@@ -144,47 +147,24 @@ export default class Work extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			sortState: [
-				{
-					selected: true,
-					orderDesc: true,
-				},
-				{
-					selected: false,
-					orderDesc: true,
-				},
-				{
-					selected: false,
-					orderDesc: true,
-				},
-			],
+			sortState: {
+				selected: 0,
+				orderDesc: [true, true, true],
+			},
 		};
 		this.setNewSortState = this.setNewSortState.bind(this);
 	}
 	setNewSortState(index) {
 		this.setState(prevState => {
-			let oldState = prevState.sortState;
-			let newState = {
-				sortState: [
-					{
-						selected: false,
-						orderDesc: oldState[0].orderDesc,
-					},
-					{
-						selected: false,
-						orderDesc: oldState[1].orderDesc,
-					},
-					{
-						selected: false,
-						orderDesc: oldState[2].orderDesc,
-					},
-				],
+			let oldSortState = prevState.sortState;
+			let newSortState = {
+				selected: index,
+				orderDesc: oldSortState.orderDesc,
 			};
-			newState.sortState[index] = {
-				selected: true,
-				orderDesc: !oldState[index].orderDesc,
-			}
-			return newState;
+			// toggle order only when clicking an already selected button
+			if (oldSortState.selected == index)
+				newSortState.orderDesc[index] = !oldSortState.orderDesc[index];
+			return { sortState: newSortState };
 		});
 	}
 	render() {
