@@ -126,7 +126,7 @@ class WorkList extends React.Component {
 		}
 		// Date or Name
 		else {
-			sortedProjects = jsonProjects.sort((projA, projB) => {
+			sortedProjects = sortedProjects.sort((projA, projB) => {
 				switch (selectedIndex){
 					case 1:
 						// Date
