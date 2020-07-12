@@ -32,7 +32,7 @@ class SortButtonList extends React.Component {
 	}
 	render() {
 		return (
-			<p>Sort by: <SortButton label="Featured" list={this.props.work} sortState={this.props.sortState} i={0}/> | <SortButton label="Date" list={this.props.work} sortState={this.props.sortState} i={1} /> | <SortButton label="Alphabetical" list={this.props.work} sortState={this.props.sortState} i={2}/></p>
+			<p>Sort by: <SortButton label="Featured" list={this.props.work} sortState={this.props.sortState} i={0} /> | <SortButton label="Date" list={this.props.work} sortState={this.props.sortState} i={1} /> | <SortButton label="Alphabetical" list={this.props.work} sortState={this.props.sortState} i={2} /></p>
 		);
 	}
 }
@@ -53,7 +53,7 @@ class SortButton extends React.Component {
 	}
 	render() {
 		let innerHTML = <span>{this.props.label}</span>
-		if (this.isSelected()){
+		if (this.isSelected()) {
 			if (this.myState().orderDesc) innerHTML = <span>{this.props.label}&#8595;</span>
 			else innerHTML = <span>{this.props.label}&#8593;</span>
 		}
@@ -70,7 +70,7 @@ function WorkItem(props) {
 
 	let techList = props.skills.map(skillStr => {
 		return (
-			<WorkItemTech text = {skillStr} />
+			<WorkItemTech text={skillStr} />
 		)
 	});
 
@@ -110,31 +110,34 @@ function WorkItem(props) {
 	);
 }
 
-function WorkList() {
-	let workItems = jsonProjects.map((project, index) => {
+class WorkList extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		let workItems = jsonProjects.map((project, index) => {
+			let boxColor = index % 2 == 0 ? global.COLORS.BLUE : global.COLORS.ORANGE
+			return (
+				<WorkItem
+					color={boxColor}
+					key={project.id}
+					id={project.id}
+					name={project.name}
+					description={project.description}
+					date={project.date}
+					homepage={project.homepage}
+					skills={project.tech}
+					links={project.links}
+				>
+				</WorkItem>
+			);
+		});
 		return (
-			<WorkItem
-				color={
-					index % 2 == 0 ? global.COLORS.BLUE : global.COLORS.ORANGE
-				}
-				key={project.id}
-				id={project.id}
-				name={project.name}
-				description={project.description}
-				date={project.date}
-				homepage={project.homepage}
-				skills={project.tech}
-				links={project.links}
-			>
-			</WorkItem>
+			<div className="boxGrid">
+				{workItems}
+			</div>
 		);
-	});
-
-	return (
-		<div className="boxGrid">
-			{workItems}
-		</div>
-	);
+	}
 }
 
 export default class Work extends React.Component {
@@ -159,7 +162,7 @@ export default class Work extends React.Component {
 		this.setNewSortState = this.setNewSortState.bind(this);
 	}
 	setNewSortState(index) {
-		this.setState(prevState =>{
+		this.setState(prevState => {
 			let oldState = prevState.sortState;
 			let newState = {
 				sortState: [
@@ -190,7 +193,7 @@ export default class Work extends React.Component {
 				<div className="boxGrid">
 					<Box color={global.COLORS.CLEAR} wide>
 						<h1>Projects and Work</h1>
-						<SortButtonList sortState={this.state.sortState} work={this}/>
+						<SortButtonList sortState={this.state.sortState} work={this} />
 					</Box>
 				</div>
 				<WorkList sortState={this.state.sortState} />
