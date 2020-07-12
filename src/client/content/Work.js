@@ -124,7 +124,11 @@ class WorkList extends React.Component {
 					return -1;
 				case 1:
 					// Date
-					return 1;
+					let dateA = projA.dateCode;
+					let dateB = projB.dateCode;
+					if ((dateA < dateB) ^ isDescending) return -1;
+					if ((dateA > dateB) ^ isDescending) return 1;
+					return 0;
 				case 2:
 					// Name
 					let nameA = projA.name.toUpperCase();
