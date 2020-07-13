@@ -58,6 +58,10 @@ app.get('*', function (req, res){
     res.sendFile(path.join(__dirname, '/../../dist/index.html'))
 });
 
+if (process.env.CI) {
+    process.exit();
+}
+
 server.listen(3000, () => {
     console.log('Hello there! Server listening on port 3000');
 });
