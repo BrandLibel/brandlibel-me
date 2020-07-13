@@ -1,4 +1,4 @@
-const IS_LOCAL = false;
+const IS_PRODUCTION = process.env.IS_PRODUCTION;
 
 const express = require('express');
 const path = require('path');
@@ -7,11 +7,7 @@ const app = express();
 // HTTP
 let hyperTextProtocol;
 var server;
-if (IS_LOCAL){
-    hyperTextProtocol = require('http');
-    server = hyperTextProtocol.Server(app);
-}
-else {
+if (IS_PRODUCTION){
     var fs = require('fs');
     var https = require('https');
     hyperTextProtocol = https;
@@ -19,6 +15,10 @@ else {
         key: fs.readFileSync('/etc/letsencrypt/live/brandlibel.me/privkey.pem'),
         cert: fs.readFileSync('/etc/letsencrypt/live/brandlibel.me/fullchain.pem') 
     }, app);
+}
+else {
+    hyperTextProtocol = require('http');
+    server = hyperTextProtocol.Server(app);
 }
 
 const filePath = path.join(__dirname, '/../../dist');
