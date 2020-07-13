@@ -15,4 +15,4 @@ jobs:
         host: ${{secrets.BRANDLIBEL_ME_HOST}}
         username: ubuntu
         privateKey: ${{secrets.BRANDLIBEL_ME_PEM}}
-        command: sudo /brandlibel-me/deploy.sh
+        command: sudo sh /brandlibel-me/deploy.sh
