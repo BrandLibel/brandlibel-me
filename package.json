@@ -5,7 +5,8 @@
   "main": "src/server/server.js",
   "scripts": {
     "dev": "webpack-dev-server",
-    "prod": "webpack -p && node src/server/server.js",
+    "start": "webpack -p && node src/server/server.js",
+    "prod": "webpack -p && nohup node src/server/server.js &",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
