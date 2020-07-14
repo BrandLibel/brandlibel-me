@@ -8,6 +8,6 @@ My personal website built using React.js and Node.js
 ## Install:
 - `yarn install`
 
-## Build and run:
-- `yarn prod`
+## Build and run locally:
+- `yarn start`
 - Visit `localhost:3000`
