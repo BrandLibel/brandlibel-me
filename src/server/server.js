@@ -4,6 +4,18 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
+const mongoClient = require('mongodb').MongoClient;
+const mongoClientUrl = 'mongodb://localhost:27017';
+const dbName = 'dbTest1';
+mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true})
+.then((db) => {
+    console.log('Success! mongodb connected');
+})
+.catch(err => {
+    console.log(err);
+    process.exit(1);
+});
+
 // HTTP
 let hyperTextProtocol;
 var server;
