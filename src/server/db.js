@@ -23,7 +23,6 @@ mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true}, (err, client) =>
                 }
                 else {
                     if (!IS_PRODUCTION){
-                        console.log('TEST: Creating test posts for blog');
                         collection.insertMany([
                             {
                                 title: 'Test Post One',
@@ -33,7 +32,10 @@ mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true}, (err, client) =>
                                 title: 'Test Post Two',
                                 markdown: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora fuga eius hic nostrum repellat delectus amet ad voluptatum. Explicabo saepe distinctio laudantium! Velit quibusdam vel, voluptatem quod veritatis porro natus!`
                             },
-                        ]);
+                        ], (err, r) => {
+                            if (err) console.log(err);
+                            else console.log('TEST ENV: Creating test posts for blog', r.insertedCount);
+                        });
                     }
                 }
             }
@@ -41,3 +43,11 @@ mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true}, (err, client) =>
         console.log(db);
     }
 });
+
+const getAllPosts = async (callback) => {
+    const collection = db.collection('posts');
+    const posts = await collection.find().toArray();
+    callback(posts);
+};
+
+module.exports = { getAllPosts };

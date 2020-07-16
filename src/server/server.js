@@ -56,6 +56,12 @@ app.get('/legal/privacy', function (req, res){
     res.redirect('/privacy');
 });
 
+app.get('/api/blog/all', function (req, res){
+    db.getAllPosts((posts) => {
+        res.json(posts);
+    });
+});
+
 app.get('*', function (req, res){
     res.sendFile(path.join(__dirname, '/../../dist/index.html'))
 });
