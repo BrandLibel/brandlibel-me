@@ -13,7 +13,7 @@ export default class Blog extends React.Component {
         .then(response => response.json())
         .then(data => {
             console.dir(data);
-            let postComponents = data.map((post) => {
+            let postComponents = data.map(post => {
                 return (
                     <Box color={global.COLORS.CLEAR} wide>
                         <h2>{post.title}</h2>

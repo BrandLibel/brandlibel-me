@@ -57,7 +57,7 @@ app.get('/legal/privacy', function (req, res){
 });
 
 app.get('/api/blog/all', function (req, res){
-    db.getAllPosts((posts) => {
+    db.getAllPosts(posts => {
         res.json(posts);
     });
 });
