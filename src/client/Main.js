@@ -3,6 +3,7 @@ import styles from './styles/module/Brandlibel.module.css';
 import React from "react";
 import Home from "./content/Home";
 import About from "./content/About";
+import Blog from "./content/Blog";
 import Work from "./content/Work";
 import Privacy from "./content/Privacy";
 import PrinceKong from "./content/PrinceKong"
@@ -34,6 +35,9 @@ const Content = () => {
 				)}/>
 				<Route path="/work" render={props => (
 					<Page {...props} component={Work} title="Projects and Work" />
+				)}/>
+				<Route path="/blog" render={props => (
+					<Page {...props} component={Blog} title="Blog Libel" />
 				)}/>
 				<Route path="/privacy" render={props => (
 					<Page {...props} component={Privacy} title="Privacy Policy" />
