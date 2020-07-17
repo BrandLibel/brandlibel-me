@@ -1,6 +1,8 @@
 import React from "react";
 import Box from "./components/Box";
 
+import { NavLink } from "react-router-dom";
+
 export default class Blog extends React.Component {
     constructor() {
         super();
@@ -16,7 +18,7 @@ export default class Blog extends React.Component {
             let postComponents = data.map(post => {
                 return (
                     <Box color={global.COLORS.CLEAR} wide>
-                        <h2>{post.title}</h2>
+                        <h2><NavLink to={`/blog/${post.slug}`}>{post.title}</NavLink></h2>
                         <p>{post.markdown}</p>
                     </Box>
                 )

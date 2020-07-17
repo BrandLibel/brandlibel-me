@@ -28,8 +28,6 @@ export default class BlogPost extends React.Component {
                 <div className="boxGrid">
                     <Box color={global.COLORS.CLEAR} wide>
                         <h1>{this.state.title}</h1>
-                    </Box>
-                    <Box color={global.COLORS.CLEAR} wide>
                         <p>{this.state.markdown}</p>
                     </Box>
                 </div>
