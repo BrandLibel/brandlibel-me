@@ -4,6 +4,7 @@ import React from "react";
 import Home from "./content/Home";
 import About from "./content/About";
 import Blog from "./content/Blog";
+import BlogPost from "./content/BlogPost";
 import Work from "./content/Work";
 import Privacy from "./content/Privacy";
 import PrinceKong from "./content/PrinceKong"
@@ -13,14 +14,15 @@ import Header from "./content/components/Header"
 import {
 	Route,
 	BrowserRouter,
-	Switch
+	Switch,
+	useParams
 } from "react-router-dom";
 
 const Page = (props) => {
 	document.title = props.title;
 	const PageComponent = props.component;
-	
-	return <PageComponent />
+	const {slug} = useParams();
+	return <PageComponent slug = {slug} />
 }
 
 const Content = () => {
@@ -36,8 +38,11 @@ const Content = () => {
 				<Route path="/work" render={props => (
 					<Page {...props} component={Work} title="Projects and Work" />
 				)}/>
-				<Route path="/blog" render={props => (
+				<Route exact path="/blog" render={props => (
 					<Page {...props} component={Blog} title="Blog Libel" />
+				)}/>
+				<Route exact path="/blog/:slug" render={props => (
+					<Page {...props} component={BlogPost} title="Blog Libel Post" />
 				)}/>
 				<Route path="/privacy" render={props => (
 					<Page {...props} component={Privacy} title="Privacy Policy" />
