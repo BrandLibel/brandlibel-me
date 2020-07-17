@@ -46,10 +46,15 @@ mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true}, (err, client) =>
     }
 });
 
-const getAllPosts = async (callback) => {
+const getPost = (slug, callback) => {
+    const collection = db.collection('posts');
+    collection.findOne({slug: slug}, null, callback);
+};
+
+const getAllPosts = async callback => {
     const collection = db.collection('posts');
     const posts = await collection.find().toArray();
     callback(posts);
 };
 
-module.exports = { getAllPosts };
+module.exports = { getPost, getAllPosts };

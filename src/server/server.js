@@ -62,6 +62,12 @@ app.get('/api/blog/all', function (req, res){
     });
 });
 
+app.get('/api/blog/:slug', function (req, res){
+    db.getPost(req.params.slug, (err, post) => {
+        res.json(post);
+    });
+});
+
 app.get('*', function (req, res){
     res.sendFile(path.join(__dirname, '/../../dist/index.html'))
 });
