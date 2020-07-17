@@ -8,7 +8,7 @@ export default class Blog extends React.Component {
         super();
         this.state = {
             posts: []
-        }
+        };
     }
     componentDidMount() {
         fetch("/api/blog/all")

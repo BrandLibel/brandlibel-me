@@ -18,6 +18,7 @@ export default class BlogPost extends React.Component {
                 title: data.title,
                 markdown: data.markdown
             });
+            document.title = `${data.title} | Blog Libel`;
         }).catch(err => {
             console.dir(err);
         });
