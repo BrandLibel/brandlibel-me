@@ -2,9 +2,10 @@ const IS_PRODUCTION = process.env.IS_PRODUCTION;
 
 const blogHelper = require('./blog-helper');
 
-const mongoClient = require('mongodb').MongoClient;
+const MongoDB = require('mongodb');
+const mongoClient = MongoDB.MongoClient;
 const mongoClientUrl = 'mongodb://localhost:27017';
-const dbName = IS_PRODUCTION ? 'dbProd' : 'dbTest2';
+const dbName = IS_PRODUCTION ? 'dbProd' : 'dbTest4';
 let db;
 
 mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true}, (err, client) => {
@@ -27,11 +28,13 @@ mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true}, (err, client) =>
                             {
                                 title: 'Test Post One',
                                 slug: blogHelper.slugify('Test Post One'),
+                                createdOn: new Date(),
                                 markdown: `Since this isn't production, the Blog comes with these test posts.`
                             },
                             {
                                 title: 'Test Post Two',
                                 slug: blogHelper.slugify('Test Post Two'),
+                                createdOn: new Date(),
                                 markdown: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora fuga eius hic nostrum repellat delectus amet ad voluptatum. Explicabo saepe distinctio laudantium! Velit quibusdam vel, voluptatem quod veritatis porro natus!`
                             },
                         ], (err, r) => {

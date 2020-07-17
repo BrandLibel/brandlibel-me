@@ -6,7 +6,8 @@ export default class BlogPost extends React.Component {
         super(props);
         this.state = {
             title: "",
-            markdown: ""
+            markdown: "",
+            createdOn: "",
         };
     }
     componentDidMount(){
@@ -16,7 +17,8 @@ export default class BlogPost extends React.Component {
         .then(data => {
             this.setState({
                 title: data.title,
-                markdown: data.markdown
+                markdown: data.markdown,
+                createdOn: new Date(data.createdOn).toLocaleDateString(),
             });
             document.title = `${data.title} | Blog Libel`;
         }).catch(err => {
@@ -29,6 +31,7 @@ export default class BlogPost extends React.Component {
                 <div className="boxGrid">
                     <Box color={global.COLORS.CLEAR} wide>
                         <h1>{this.state.title}</h1>
+                        <p>Published {this.state.createdOn}</p>
                         <p>{this.state.markdown}</p>
                     </Box>
                 </div>
