@@ -116,6 +116,7 @@ a:hover {
     color: var(--color-box-orange);
 }
 .clearBoxLink {
+    color: var(--color-brandlibel-blue);
     transition: none;
 }
 .clearBoxLink:hover {

@@ -18,7 +18,7 @@ export default class Blog extends React.Component {
             let postComponents = data.map(post => {
                 return (
                     <Box color={global.COLORS.CLEAR} wide>
-                        <h2><NavLink to={`/blog/${post.slug}`}>{post.title}</NavLink></h2>
+                        <h2><NavLink to={`/blog/${post.slug}`}><span className="clearBoxLink">{post.title}</span></NavLink></h2>
                         <p>{post.markdown}</p>
                     </Box>
                 )
