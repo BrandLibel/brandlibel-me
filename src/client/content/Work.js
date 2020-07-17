@@ -62,7 +62,7 @@ class SortButton extends React.Component {
 			aClassName = "clearBoxLinkSelected";
 		}
 
-		return <a href="#" className={aClassName} onClick={this.onClick}>{innerHTML}</a>;
+		return <a href="javascript:void(0);" className={aClassName} onClick={this.onClick}>{innerHTML}</a>;
 	}
 }
 
