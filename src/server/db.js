@@ -1,10 +1,10 @@
-const mongoClient = require('mongodb').MongoClient;
-const mongoClientUrl = 'mongodb://localhost:27017';
-
 const IS_PRODUCTION = process.env.IS_PRODUCTION;
 
-const dbName = IS_PRODUCTION ? 'dbProd' : 'dbTest1';
+const blogHelper = require('./blog-helper');
 
+const mongoClient = require('mongodb').MongoClient;
+const mongoClientUrl = 'mongodb://localhost:27017';
+const dbName = IS_PRODUCTION ? 'dbProd' : 'dbTest2';
 let db;
 
 mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true}, (err, client) => {
@@ -26,10 +26,12 @@ mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true}, (err, client) =>
                         collection.insertMany([
                             {
                                 title: 'Test Post One',
+                                slug: blogHelper.slugify('Test Post One'),
                                 markdown: `Since this isn't production, the Blog comes with these test posts.`
                             },
                             {
                                 title: 'Test Post Two',
+                                slug: blogHelper.slugify('Test Post Two'),
                                 markdown: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora fuga eius hic nostrum repellat delectus amet ad voluptatum. Explicabo saepe distinctio laudantium! Velit quibusdam vel, voluptatem quod veritatis porro natus!`
                             },
                         ], (err, r) => {
