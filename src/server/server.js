@@ -72,7 +72,7 @@ app.get('/api/blog/:slug', (req, res) => {
 });
 
 function isValidPass(pass) {
-    return process.env.BRANDLIBEL_PASS == undefined 
+    return process.env.BRANDLIBEL_PASS == undefined
         || pass == process.env.BRANDLIBEL_PASS;
 }
 
@@ -87,6 +87,19 @@ app.post('/api/newPost', jsonParser, (req, res) => {
     db.makeNewPost(jsonBody, (err, result) => {
         res.status(200).send();
     })
+});
+
+app.delete('/api/deletePost', jsonParser, (req, res) => {
+    const jsonBody = req.body;
+
+    if (!isValidPass(jsonBody.adminPassword)){
+        res.status(401).send();
+        return;
+    }
+
+    console.log(jsonBody.slug);
+
+    res.status(200).send();
 });
 
 app.get('*', (req, res) => {
