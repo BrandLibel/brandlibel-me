@@ -6,6 +6,7 @@ import About from "./content/About";
 import Blog from "./content/Blog";
 import BlogPost from "./content/BlogPost";
 import Work from "./content/Work";
+import Admin from "./content/Admin";
 import Privacy from "./content/Privacy";
 import PrinceKong from "./content/PrinceKong"
 import NotFound from "./content/NotFound";
@@ -37,6 +38,9 @@ const Content = () => {
 				)}/>
 				<Route path="/work" render={props => (
 					<Page {...props} component={Work} title="Projects and Work" />
+				)}/>
+				<Route exact path="/admin" render={props => (
+					<Page {...props} component={Admin} title="Admin Console" />
 				)}/>
 				<Route exact path="/blog" render={props => (
 					<Page {...props} component={Blog} title="Blog Libel" />
