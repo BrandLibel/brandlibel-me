@@ -5,7 +5,7 @@
   "main": "src/server/server.js",
   "scripts": {
     "dev": "webpack-dev-server",
-    "start": "webpack -p && node src/server/server.js",
+    "start": "mocha && webpack -p && node src/server/server.js",
     "prod": "webpack -p && sudo nohup node src/server/server.js > /tmp/testLog.txt &",
     "test": "mocha"
   },
