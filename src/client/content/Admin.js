@@ -26,6 +26,18 @@ export default class Admin extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log("Submitted!", this.state[N_TITLE], this.state[N_MARKDOWN]);
+
+        const json = {
+            [N_PASSWORD]: this.state[N_PASSWORD],
+            [N_TITLE]: this.state[N_TITLE],
+            [N_MARKDOWN]: this.state[N_MARKDOWN],
+        };
+
+        const request = new XMLHttpRequest();
+        request.open("POST", "/api/newPost");
+        request.setRequestHeader("Content-Type", "application/json");
+
+        request.send(JSON.stringify(json));
     }
     render() {
         return (

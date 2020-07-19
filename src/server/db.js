@@ -6,7 +6,9 @@ const MongoDB = require('mongodb');
 const mongoClient = MongoDB.MongoClient;
 const mongoClientUrl = 'mongodb://localhost:27017';
 const dbName = IS_PRODUCTION ? 'dbProd' : 'dbTest4';
+
 let db;
+let collectionPosts;
 
 mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true}, (err, client) => {
     if (err){
@@ -19,6 +21,7 @@ mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true}, (err, client) =>
             'posts',
             { strict: true }, // Returns error when collection already exists
             (err, collection) => {
+                collectionPosts = db.collection('posts');
                 if (err) {
                     console.log(err);
                 }
@@ -50,14 +53,21 @@ mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true}, (err, client) =>
 });
 
 const getPost = (slug, callback) => {
-    const collection = db.collection('posts');
-    collection.findOne({slug: slug}, null, callback);
+    collectionPosts.findOne({slug: slug}, null, callback);
 };
 
 const getAllPosts = async callback => {
-    const collection = db.collection('posts');
-    const posts = await collection.find().toArray();
+    const posts = await collectionPosts.find().toArray();
     callback(posts);
 };
 
-module.exports = { getPost, getAllPosts };
+const makeNewPost = (postJson, callback) => {
+    collectionPosts.insertOne({
+        title: postJson.newPostTitle,
+        markdown: postJson.newPostMarkdown,
+        slug: blogHelper.slugify(postJson.newPostTitle),
+        createdOn: new Date(),
+    }, null, callback);
+};
+
+module.exports = { getPost, getAllPosts, makeNewPost };
