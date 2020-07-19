@@ -70,7 +70,7 @@ export default class Blog extends React.Component {
                 <Box color={global.COLORS.CLEAR} wide>
                     <h1>Blog Libel</h1>
                 </Box>
-                <BlogPostList isAdminConsole />
+                <BlogPostList />
             </div>
         );
     }

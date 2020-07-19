@@ -1,6 +1,8 @@
 import React from "react";
 import Box from "./components/Box";
 
+import { BlogPostList } from "./Blog";
+
 const N_PASSWORD = "adminPassword";
 const N_TITLE = "newPostTitle";
 const N_MARKDOWN = "newPostMarkdown";
@@ -73,6 +75,7 @@ export default class Admin extends React.Component {
                         <button>Post</button>
                     </form>
                 </Box>
+                <BlogPostList isAdminConsole />
             </div>
         );
     }
