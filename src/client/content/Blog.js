@@ -11,6 +11,7 @@ export class BlogPostList extends React.Component {
             posts: []
         };
         this.handleDelete = this.handleDelete.bind(this);
+        this.refreshAllBlogPosts = this.refreshAllBlogPosts.bind(this);
     }
     handleDelete(slug) {
         const json = {
@@ -22,8 +23,17 @@ export class BlogPostList extends React.Component {
         request.open("DELETE", "/api/deletePost");
         request.setRequestHeader("Content-Type", "application/json");
         request.send(JSON.stringify(json));
+
+        request.onreadystatechange = () => {
+            if (request.readyState == 4 && request.status == 200) {
+                this.refreshAllBlogPosts();
+            }
+        }
     }
     componentDidMount() {
+        this.refreshAllBlogPosts();
+    }
+    refreshAllBlogPosts() {
         fetch("/api/blog/all")
             .then(response => response.json())
             .then(data => {
@@ -31,11 +41,10 @@ export class BlogPostList extends React.Component {
                     const CURRENT_SLUG = post.slug;
                     let adminButtons = (<p>
                         <BoxButton color={global.COLORS.RED} label="Delete" clickCallback={
-                                (event) => {
-                                    console.log("handleClick", CURRENT_SLUG);
-                                    this.handleDelete(CURRENT_SLUG);
-                                }
+                            (event) => {
+                                this.handleDelete(CURRENT_SLUG);
                             }
+                        }
                         />
                         <BoxButton label="Edit" />
                     </p>);

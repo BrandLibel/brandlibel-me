@@ -97,9 +97,9 @@ app.delete('/api/deletePost', jsonParser, (req, res) => {
         return;
     }
 
-    console.log(jsonBody.slug);
-
-    res.status(200).send();
+    db.deletePost(jsonBody.slug, (err, result) => {
+        res.status(200).send();
+    })
 });
 
 app.get('*', (req, res) => {
