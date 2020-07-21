@@ -1,5 +1,6 @@
 import React from "react";
 import Box from "./components/Box";
+import { BoxButton } from "./components/Button";
 
 import { BlogPostList } from "./Blog";
 
@@ -16,6 +17,7 @@ export default class Admin extends React.Component {
             [N_PASSWORD]: "",
             [N_TITLE]: "",
             [N_MARKDOWN]: "",
+            postResponseString: "",
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,6 +42,22 @@ export default class Admin extends React.Component {
         request.setRequestHeader("Content-Type", "application/json");
 
         request.send(JSON.stringify(json));
+
+        request.onreadystatechange = () => {
+            if (request.readyState == 4){
+                if (request.status == 200) {
+                    this.setState({
+                        [N_PASSWORD]: "",
+                        [N_TITLE]: "",
+                        [N_MARKDOWN]: "",
+                        postResponseString: "Success! Posted blog post.", 
+                    });
+                }
+                else {
+                    this.setState({postResponseString: `Failure. Error ${request.status}`});
+                }
+            }
+        }
     }
     render() {
         return (
@@ -72,7 +90,8 @@ export default class Admin extends React.Component {
                             value={this.state[N_MARKDOWN]}
                         />
                         <br />
-                        <button>Post</button>
+                        <p>{this.state.postResponseString}</p>
+                        <BoxButton color={global.COLORS.BLUE} label="Post" />
                     </form>
                 </Box>
                 <BlogPostList isAdminConsole />
