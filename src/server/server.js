@@ -1,4 +1,5 @@
 const IS_PRODUCTION = process.env.IS_PRODUCTION;
+const ADMIN_PASSWORD = process.env.BRANDLIBEL_PASS;
 
 const express = require('express');
 const path = require('path');
@@ -72,8 +73,8 @@ app.get('/api/blog/:slug', (req, res) => {
 });
 
 function isValidPass(pass) {
-    return process.env.BRANDLIBEL_PASS == undefined
-        || pass == process.env.BRANDLIBEL_PASS;
+    return ADMIN_PASSWORD == undefined
+        || ADMIN_PASSWORD == pass;
 }
 
 app.post('/api/newPost', jsonParser, (req, res) => {
