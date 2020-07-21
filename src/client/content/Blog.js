@@ -49,10 +49,13 @@ export class BlogPostList extends React.Component {
                         <BoxButton label="Edit" />
                     </p>);
 
+                    let truncatedExcerpt = post.markdown.substr(0, 220);
+                    if (truncatedExcerpt.length < post.markdown.length) truncatedExcerpt += "...";
+
                     return (
                         <Box color={global.COLORS.CLEAR} wide>
                             <h2><NavLink to={`/blog/${post.slug}`}><span className="clearBoxLink">{post.title}</span></NavLink></h2>
-                            <p>{post.markdown}</p>
+                            <p>{truncatedExcerpt}</p>
                             {this.props.isAdminConsole && adminButtons}
                         </Box>
                     )

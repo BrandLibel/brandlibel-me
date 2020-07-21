@@ -1,5 +1,6 @@
 import React from "react";
 import Box from "./components/Box";
+import ReactMarkdown from "react-markdown";
 
 export default class BlogPost extends React.Component {
     constructor(props) {
@@ -32,7 +33,7 @@ export default class BlogPost extends React.Component {
                     <Box color={global.COLORS.CLEAR} wide>
                         <h1>{this.state.title}</h1>
                         <p>Published {this.state.createdOn}</p>
-                        <p>{this.state.markdown}</p>
+                        <ReactMarkdown source={this.state.markdown} />
                     </Box>
                 </div>
             </div>
