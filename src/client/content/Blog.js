@@ -102,7 +102,7 @@ export class BlogPostList extends React.Component {
                 }).reverse(); // reverse shows latest blog posts first
                 this.setState({
                     posts: postComponents,
-                    //isLoading: false,
+                    isLoading: false,
                 });
             });
     }

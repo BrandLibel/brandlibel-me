@@ -14,7 +14,7 @@ const OPTIONS = {
     direction: 1, // 1: clockwise, -1: counterclockwise
     color: '#222222', // CSS color or array of colors
     fadeColor: 'transparent', // CSS color or array of colors
-    top: '100%', // Top position relative to parent
+    top: '50%', // Top position relative to parent
     left: '50%', // Left position relative to parent
     shadow: '', // Box-shadow for the lines
     zIndex: 2000000000, // The z-index (defaults to 2e9)
