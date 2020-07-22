@@ -14,9 +14,9 @@ const OPTIONS = {
     direction: 1, // 1: clockwise, -1: counterclockwise
     color: '#222222', // CSS color or array of colors
     fadeColor: 'transparent', // CSS color or array of colors
-    top: '50%', // Top position relative to parent
+    top: '100%', // Top position relative to parent
     left: '50%', // Left position relative to parent
-    shadow: '0', // Box-shadow for the lines
+    shadow: '', // Box-shadow for the lines
     zIndex: 2000000000, // The z-index (defaults to 2e9)
     className: 'spinner', // The CSS class to assign to the spinner
     position: 'absolute', // Element positioning

@@ -61,42 +61,46 @@ export default class Admin extends React.Component {
     }
     render() {
         return (
-            <div className="boxGrid">
-                <Box color={global.COLORS.CLEAR} wide>
-                    <h1>Admin Console</h1>
-                    <label>Admin password:</label>
-                    <input
-                        name={N_PASSWORD}
-                        placeholder="Password"
-                        type="password"
-                        onChange={this.handleChange}
-                        value={this.state[N_PASSWORD]}
-                    />
-                    <form name={F_NEW_POST} onSubmit={this.handleSubmit}>
-                        <h2>New Blog Post</h2>
+            <div>
+                <div className="boxGrid">
+                    <Box color={global.COLORS.CLEAR} wide>
+                        <h1>Admin Console</h1>
+                        <label>Admin password:</label>
                         <input
-                            name={N_TITLE}
-                            placeholder="Title"
-                            type="text"
-                            required
+                            name={N_PASSWORD}
+                            placeholder="Password"
+                            type="password"
                             onChange={this.handleChange}
-                            value={this.state[N_TITLE]}
+                            value={this.state[N_PASSWORD]}
                         />
-                        <br />
-                        <textarea
-                            name={N_MARKDOWN}
-                            rows="14"
-                            placeholder="Markdown"
-                            required
-                            onChange={this.handleChange}
-                            value={this.state[N_MARKDOWN]}
-                        />
-                        <br />
-                        <p>{this.state.postResponseString}</p>
-                        <BoxButton color={global.COLORS.BLUE} label="Post" />
-                    </form>
-                </Box>
-                <BlogPostList isAdminConsole password={this.state[N_PASSWORD]}/>
+                        <form name={F_NEW_POST} onSubmit={this.handleSubmit}>
+                            <h2>New Blog Post</h2>
+                            <input
+                                name={N_TITLE}
+                                placeholder="Title"
+                                type="text"
+                                required
+                                onChange={this.handleChange}
+                                value={this.state[N_TITLE]}
+                            />
+                            <br />
+                            <textarea
+                                name={N_MARKDOWN}
+                                rows="14"
+                                placeholder="Markdown"
+                                required
+                                onChange={this.handleChange}
+                                value={this.state[N_MARKDOWN]}
+                            />
+                            <br />
+                            <p>{this.state.postResponseString}</p>
+                            <BoxButton color={global.COLORS.BLUE} label="Post" />
+                        </form>
+                    </Box>
+                </div>
+                <div className="boxGrid">
+                    <BlogPostList isAdminConsole password={this.state[N_PASSWORD]}/>
+                </div>
             </div>
         );
     }

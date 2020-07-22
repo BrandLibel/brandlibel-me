@@ -13,25 +13,25 @@ export default class BlogPost extends React.Component {
             isLoading: true,
         };
     }
-    componentDidMount(){
+    componentDidMount() {
         let slug = this.props.slug;
         fetch(`/api/blog/${slug}`)
-        .then(response => response.json())
-        .then(data => {
-            this.setState({
-                title: data.title,
-                markdown: data.markdown,
-                createdOn: new Date(data.createdOn).toLocaleDateString(),
-                //isLoading: false,
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    title: data.title,
+                    markdown: data.markdown,
+                    createdOn: new Date(data.createdOn).toLocaleDateString(),
+                    isLoading: false,
+                });
+                document.title = `${data.title} | Blog Libel`;
+            }).catch(err => {
+                console.dir(err);
             });
-            document.title = `${data.title} | Blog Libel`;
-        }).catch(err => {
-            console.dir(err);
-        });
     }
-    render(){
+    render() {
         if (this.state.isLoading) return <BrandSpinner />;
-        
+
         return (
             <div>
                 <div className="boxGrid">
