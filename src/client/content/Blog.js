@@ -4,18 +4,36 @@ import { BoxButton } from "./components/Button";
 
 import { NavLink } from "react-router-dom";
 
-function AdminButtons(props) {
-    return (
-        <p>
-            <BoxButton color={global.COLORS.RED} label="Delete" clickCallback={
-                (event) => {
-                    props.handleDelete();
+class AdminButtons extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            allowDelete: false,
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
+    handleChange(event) {
+        this.setState(prevState => {return {allowDelete: !prevState.allowDelete}});
+    }
+    render() {
+        return (
+            <p>
+                <BoxButton color={global.COLORS.RED} label="Delete" clickCallback={
+                    (event) => {
+                        if (this.state.allowDelete) {
+                            this.props.handleDelete();
+                            this.setState({allowDelete: false});
+                        }
+                        else console.log("Delete not allowed; check the box first.");
+                    }
                 }
-            }
-            />
-            <BoxButton label="Edit" />
-        </p>
-    );
+                />
+                <BoxButton label="Edit" />
+                <label>Allow Delete?</label>
+                <input type="checkbox" onChange={this.handleChange} checked={this.state.allowDelete}/>
+            </p>
+        );
+    }
 }
 
 export class BlogPostList extends React.Component {
@@ -57,11 +75,13 @@ export class BlogPostList extends React.Component {
                     let truncatedExcerpt = post.markdown.substr(0, 220);
                     if (truncatedExcerpt.length < post.markdown.length) truncatedExcerpt += "...";
 
+                    let adminButtons = <AdminButtons handleDelete={() => this.handleDelete(CURRENT_SLUG)}/>;
+
                     return (
                         <Box color={global.COLORS.CLEAR} wide>
                             <h2><NavLink to={`/blog/${post.slug}`}><span className="clearBoxLink">{post.title}</span></NavLink></h2>
                             <p>{truncatedExcerpt}</p>
-                            {this.props.isAdminConsole && <AdminButtons handleDelete={() => this.handleDelete(CURRENT_SLUG)}/>}
+                            {this.props.isAdminConsole && adminButtons}
                         </Box>
                     )
                 });
