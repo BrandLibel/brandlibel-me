@@ -1,6 +1,7 @@
 html {
     --color-text: #222222;
     --color-bg: #FFFFFF;
+    --color-input: #FFFFFF;
     --color-white: #ffffff;
     --color-brandlibel-blue: #2DADD6;
 
@@ -214,13 +215,17 @@ iframe {
 .fb-like iframe {
     max-width: 100%;
 }
-.testGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    grid-gap: 1.5rem;
+
+form {
+    width: 100%;
 }
-.testGridItem {
-    background-color: #1c57b5;
+input, textarea {
+    width: 100%;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    background-color: var(--color-input);
+    border: none;
+    
 }
 
 .boxGrid {

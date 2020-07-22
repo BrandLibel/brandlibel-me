@@ -67,6 +67,7 @@ export default class Admin extends React.Component {
                     <label>Admin password:</label>
                     <input
                         name={N_PASSWORD}
+                        placeholder="Password"
                         type="password"
                         onChange={this.handleChange}
                         value={this.state[N_PASSWORD]}
@@ -84,6 +85,7 @@ export default class Admin extends React.Component {
                         <br />
                         <textarea
                             name={N_MARKDOWN}
+                            rows="14"
                             placeholder="Markdown"
                             required
                             onChange={this.handleChange}
