@@ -22,6 +22,10 @@ class AdminButtons extends React.Component {
                     (event) => {
                         if (this.state.allowDelete) {
                             this.props.handleDelete();
+                            // This is a patch for a bug where the next blog post
+                            // will "inherit" this component state, so it'll have the checkbox checked
+                            // even if it didn't right before this component deletes its parent blog post.
+                            // Consider fixing what is fundamentally wrong with it in the future. 
                             this.setState({allowDelete: false});
                         }
                         else console.log("Delete not allowed; check the box first.");
@@ -34,6 +38,16 @@ class AdminButtons extends React.Component {
             </p>
         );
     }
+}
+
+function BlogPost(props) {
+    return (
+        <Box color={global.COLORS.CLEAR} wide>
+            <h2><NavLink to={`/blog/${props.slug}`}><span className="clearBoxLink">{props.title}</span></NavLink></h2>
+            <p>{props.excerpt}</p>
+            {props.isAdminConsole && <AdminButtons handleDelete={props.handleDelete}/>}
+        </Box>
+    );
 }
 
 export class BlogPostList extends React.Component {
@@ -75,14 +89,14 @@ export class BlogPostList extends React.Component {
                     let truncatedExcerpt = post.markdown.substr(0, 220);
                     if (truncatedExcerpt.length < post.markdown.length) truncatedExcerpt += "...";
 
-                    let adminButtons = <AdminButtons handleDelete={() => this.handleDelete(CURRENT_SLUG)}/>;
-
                     return (
-                        <Box color={global.COLORS.CLEAR} wide>
-                            <h2><NavLink to={`/blog/${post.slug}`}><span className="clearBoxLink">{post.title}</span></NavLink></h2>
-                            <p>{truncatedExcerpt}</p>
-                            {this.props.isAdminConsole && adminButtons}
-                        </Box>
+                        <BlogPost
+                            excerpt={truncatedExcerpt}
+                            isAdminConsole={this.props.isAdminConsole}
+                            slug={post.slug}
+                            title={post.title}
+                            handleDelete={() => this.handleDelete(CURRENT_SLUG)}
+                        />
                     )
                 });
                 this.setState({
