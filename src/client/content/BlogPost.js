@@ -1,6 +1,7 @@
 import React from "react";
 import Box from "./components/Box";
 import ReactMarkdown from "react-markdown";
+import BrandSpinner from "./components/BrandSpinner";
 
 export default class BlogPost extends React.Component {
     constructor(props) {
@@ -9,6 +10,7 @@ export default class BlogPost extends React.Component {
             title: "",
             markdown: "",
             createdOn: "",
+            isLoading: true,
         };
     }
     componentDidMount(){
@@ -20,6 +22,7 @@ export default class BlogPost extends React.Component {
                 title: data.title,
                 markdown: data.markdown,
                 createdOn: new Date(data.createdOn).toLocaleDateString(),
+                //isLoading: false,
             });
             document.title = `${data.title} | Blog Libel`;
         }).catch(err => {
@@ -27,6 +30,8 @@ export default class BlogPost extends React.Component {
         });
     }
     render(){
+        if (this.state.isLoading) return <BrandSpinner />;
+        
         return (
             <div>
                 <div className="boxGrid">
