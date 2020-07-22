@@ -16,7 +16,7 @@ export class BlogPostList extends React.Component {
     handleDelete(slug) {
         const json = {
             slug: slug,
-            password: "test1234",
+            password: this.props.password,
         };
 
         const request = new XMLHttpRequest();
@@ -82,7 +82,7 @@ export default class Blog extends React.Component {
                 <Box color={global.COLORS.CLEAR} wide>
                     <h1>Blog Libel</h1>
                 </Box>
-                <BlogPostList />
+                <BlogPostList password=""/>
             </div>
         );
     }

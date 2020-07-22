@@ -96,7 +96,7 @@ export default class Admin extends React.Component {
                         <BoxButton color={global.COLORS.BLUE} label="Post" />
                     </form>
                 </Box>
-                <BlogPostList isAdminConsole />
+                <BlogPostList isAdminConsole password={this.state[N_PASSWORD]}/>
             </div>
         );
     }
