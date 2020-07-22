@@ -4,6 +4,20 @@ import { BoxButton } from "./components/Button";
 
 import { NavLink } from "react-router-dom";
 
+function AdminButtons(props) {
+    return (
+        <p>
+            <BoxButton color={global.COLORS.RED} label="Delete" clickCallback={
+                (event) => {
+                    props.handleDelete();
+                }
+            }
+            />
+            <BoxButton label="Edit" />
+        </p>
+    );
+}
+
 export class BlogPostList extends React.Component {
     constructor(props) {
         super(props);
@@ -39,15 +53,6 @@ export class BlogPostList extends React.Component {
             .then(data => {
                 let postComponents = data.map(post => {
                     const CURRENT_SLUG = post.slug;
-                    let adminButtons = (<p>
-                        <BoxButton color={global.COLORS.RED} label="Delete" clickCallback={
-                            (event) => {
-                                this.handleDelete(CURRENT_SLUG);
-                            }
-                        }
-                        />
-                        <BoxButton label="Edit" />
-                    </p>);
 
                     let truncatedExcerpt = post.markdown.substr(0, 220);
                     if (truncatedExcerpt.length < post.markdown.length) truncatedExcerpt += "...";
@@ -56,7 +61,7 @@ export class BlogPostList extends React.Component {
                         <Box color={global.COLORS.CLEAR} wide>
                             <h2><NavLink to={`/blog/${post.slug}`}><span className="clearBoxLink">{post.title}</span></NavLink></h2>
                             <p>{truncatedExcerpt}</p>
-                            {this.props.isAdminConsole && adminButtons}
+                            {this.props.isAdminConsole && <AdminButtons handleDelete={() => this.handleDelete(CURRENT_SLUG)}/>}
                         </Box>
                     )
                 });
