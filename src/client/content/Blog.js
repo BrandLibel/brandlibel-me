@@ -33,8 +33,7 @@ class AdminButtons extends React.Component {
                 }
                 />
                 <BoxButton label="Edit" />
-                <label>Allow Delete?</label>
-                <input type="checkbox" onChange={this.handleChange} checked={this.state.allowDelete}/>
+                <input type="checkbox" onChange={this.handleChange} checked={this.state.allowDelete}/> <label>Allow Delete?</label>
             </p>
         );
     }
