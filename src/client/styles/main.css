@@ -219,13 +219,12 @@ iframe {
 form {
     width: 100%;
 }
-input, textarea {
+input[type=text], input[type=password], textarea {
     width: 100%;
     font-size: 1.8rem;
     line-height: 2.2rem;
     background-color: var(--color-input);
     border: none;
-    
 }
 
 .boxGrid {
