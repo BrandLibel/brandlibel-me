@@ -98,7 +98,7 @@ export class BlogPostList extends React.Component {
                             handleDelete={() => this.handleDelete(CURRENT_SLUG)}
                         />
                     )
-                });
+                }).reverse(); // reverse shows latest blog posts first
                 this.setState({
                     posts: postComponents
                 });
