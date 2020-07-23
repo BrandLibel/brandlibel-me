@@ -43,6 +43,7 @@ export default function Header() {
 					<HeaderItem path="/" name="HOME" />
 					<HeaderItem path="/work" name="WORK" />
 					<HeaderItem path="/about" name="ABOUT" />
+					<HeaderItem path="/blog" name="BLOG" />
 				</HeaderList>
 			</div>
 		</header>
