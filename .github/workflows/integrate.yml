@@ -14,5 +14,6 @@ jobs:
       with:
         node-version: 10
     - run: yarn install
+    - run: yarn test
     - name: Build and run production
       run: yarn prod
