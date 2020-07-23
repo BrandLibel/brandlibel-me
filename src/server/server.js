@@ -1,8 +1,14 @@
 const IS_PRODUCTION = process.env.IS_PRODUCTION;
+const ADMIN_PASSWORD = process.env.BRANDLIBEL_PASS;
 
 const express = require('express');
 const path = require('path');
 const app = express();
+
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
+
+const db = require('./db');
 
 // HTTP
 let hyperTextProtocol;
@@ -23,38 +29,81 @@ else {
 
 const filePath = path.join(__dirname, '/../../dist');
 
-app.use(express.static(filePath), function (req, res, next){
+app.use(express.static(filePath), (req, res, next) => {
     next();
 });
 
-app.get('/indefinite', function(req, res){
+app.get('/indefinite', (req, res) => {
     res.sendFile(path.join(__dirname, '/../../dist/indefinite.html'));
 });
-app.get('/indefinite-love', function(req, res){
+app.get('/indefinite-love', (req, res) => {
     res.sendFile(path.join(__dirname, '/../../dist/indefinite-love.html'));
 });
 
-app.get('/pathfinder', function (req, res){
+app.get('/pathfinder', (req, res) => {
     res.redirect('/work');
 });
 
-app.get('/moody', function (req, res){
+app.get('/moody', (req, res) => {
     res.redirect('/work');
 });
 
-app.get('/level-editor', function (req, res){
+app.get('/level-editor', (req, res) => {
     res.redirect('/work');
 });
 
-app.get('/journey', function (req, res){
+app.get('/journey', (req, res) => {
     res.redirect('/work');
 });
 
-app.get('/legal/privacy', function (req, res){
+app.get('/legal/privacy', (req, res) => {
     res.redirect('/privacy');
 });
 
-app.get('*', function (req, res){
+app.get('/api/blog/all', (req, res) => {
+    db.getAllPosts(posts => {
+        res.json(posts);
+    });
+});
+
+app.get('/api/blog/:slug', (req, res) => {
+    db.getPost(req.params.slug, (err, post) => {
+        res.json(post);
+    });
+});
+
+function isValidPass(pass) {
+    return ADMIN_PASSWORD == undefined
+        || ADMIN_PASSWORD == pass;
+}
+
+app.post('/api/newPost', jsonParser, (req, res) => {
+    const jsonBody = req.body;
+
+    if (!isValidPass(jsonBody.adminPassword)){
+        res.status(401).send();
+        return;
+    }
+
+    db.makeNewPost(jsonBody, (err, result) => {
+        res.status(200).send();
+    })
+});
+
+app.delete('/api/deletePost', jsonParser, (req, res) => {
+    const jsonBody = req.body;
+
+    if (!isValidPass(jsonBody.adminPassword)){
+        res.status(401).send();
+        return;
+    }
+
+    db.deletePost(jsonBody.slug, (err, result) => {
+        res.status(200).send();
+    })
+});
+
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '/../../dist/index.html'))
 });
 

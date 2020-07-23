@@ -50,3 +50,9 @@
 .selectedHeaderItem {
     color: var(--color-brandlibel-blue);
 }
+
+@media only screen and (max-width: 620px) {
+    .logoContainer {
+        display: none;
+    }
+}
