@@ -1,13 +1,12 @@
 import React from "react";
+import PostForm from "./components/PostForm";
 import Box from "./components/Box";
-import { BoxButton } from "./components/Button";
 
 import { BlogPostList } from "./Blog";
 
 const N_PASSWORD = "adminPassword";
 const N_TITLE = "newPostTitle";
 const N_MARKDOWN = "newPostMarkdown";
-
 const F_NEW_POST = "newPostForm";
 
 export default class Admin extends React.Component {
@@ -73,29 +72,18 @@ export default class Admin extends React.Component {
                             onChange={this.handleChange}
                             value={this.state[N_PASSWORD]}
                         />
-                        <form name={F_NEW_POST} onSubmit={this.handleSubmit}>
-                            <h2>New Blog Post</h2>
-                            <input
-                                name={N_TITLE}
-                                placeholder="Title"
-                                type="text"
-                                required
-                                onChange={this.handleChange}
-                                value={this.state[N_TITLE]}
-                            />
-                            <br />
-                            <textarea
-                                name={N_MARKDOWN}
-                                rows="14"
-                                placeholder="Markdown"
-                                required
-                                onChange={this.handleChange}
-                                value={this.state[N_MARKDOWN]}
-                            />
-                            <br />
-                            <p>{this.state.postResponseString}</p>
-                            <BoxButton color={global.COLORS.BLUE} label="Post" />
-                        </form>
+                        <PostForm
+                            N_PASSWORD = {N_PASSWORD}
+                            N_TITLE = {N_TITLE}
+                            N_MARKDOWN = {N_MARKDOWN}
+                            F_NEW_POST = {F_NEW_POST}
+                            adminPassword={this.state[N_PASSWORD]}
+                            postTitle={this.state[N_TITLE]}
+                            markdown={this.state[N_MARKDOWN]}
+                            postResponseString={this.state.postResponseString}
+                            handleChange={this.handleChange}
+                            handleSubmit={this.handleSubmit}
+                        />
                     </Box>
                 </div>
                 <div className="boxGrid">
