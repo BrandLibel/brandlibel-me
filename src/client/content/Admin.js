@@ -46,7 +46,6 @@ export default class Admin extends React.Component {
             if (request.readyState == 4){
                 if (request.status == 200) {
                     this.setState({
-                        [N_PASSWORD]: "",
                         [N_TITLE]: "",
                         [N_MARKDOWN]: "",
                         postResponseString: "Success! Posted blog post.", 
@@ -72,12 +71,12 @@ export default class Admin extends React.Component {
                             onChange={this.handleChange}
                             value={this.state[N_PASSWORD]}
                         />
+                        <h2>New Blog Post</h2>
                         <PostForm
                             N_PASSWORD = {N_PASSWORD}
                             N_TITLE = {N_TITLE}
                             N_MARKDOWN = {N_MARKDOWN}
                             F_NEW_POST = {F_NEW_POST}
-                            adminPassword={this.state[N_PASSWORD]}
                             postTitle={this.state[N_TITLE]}
                             markdown={this.state[N_MARKDOWN]}
                             postResponseString={this.state.postResponseString}
