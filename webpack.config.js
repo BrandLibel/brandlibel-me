@@ -4,7 +4,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
     entry: path.join(__dirname, '/src/client/index.js'),
     output: {
-        filename: 'build.js',
+        filename: '[name].js?h=[contenthash]',
+        chunkFilename: '[name].js?h=[contenthash]',
         path: path.join(__dirname, '/dist')
     },
     module: {
@@ -66,5 +67,18 @@ module.exports = {
                 { from: './src/client/favicon-indefinite-love.ico' },
             ]
         })
-    ]
+    ],
+    optimization: {
+        moduleIds: 'hashed',
+        runtimeChunk: 'single',
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendor',
+                    chunks: 'all',
+                },
+            },
+        },
+    },
 }

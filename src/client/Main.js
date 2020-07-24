@@ -12,6 +12,8 @@ import PrinceKong from "./content/PrinceKong"
 import NotFound from "./content/NotFound";
 import Header from "./content/components/Header"
 
+import ReactGA from "react-ga";
+
 import {
 	Route,
 	BrowserRouter,
@@ -22,8 +24,9 @@ import {
 const Page = (props) => {
 	document.title = props.title;
 	const PageComponent = props.component;
-	const {slug} = useParams();
-	return <PageComponent slug = {slug} />
+	const { slug } = useParams();
+	ReactGA.pageview(props.location.pathname);
+	return <PageComponent slug={slug} />
 }
 
 const Content = () => {
@@ -32,31 +35,31 @@ const Content = () => {
 			<Switch>
 				<Route exact path="/" render={props => (
 					<Page {...props} component={Home} title="Brandon Li | Full Stack Developer" />
-				)}/>
+				)} />
 				<Route path="/about" render={props => (
 					<Page {...props} component={About} title="About Brandon" />
-				)}/>
+				)} />
 				<Route path="/work" render={props => (
 					<Page {...props} component={Work} title="Projects and Work" />
-				)}/>
+				)} />
 				<Route exact path="/admin" render={props => (
 					<Page {...props} component={Admin} title="Admin Console" />
-				)}/>
+				)} />
 				<Route exact path="/blog" render={props => (
 					<Page {...props} component={Blog} title="Blog Libel" />
-				)}/>
+				)} />
 				<Route exact path="/blog/:slug" render={props => (
 					<Page {...props} component={BlogPost} title="Blog Libel Post" />
-				)}/>
+				)} />
 				<Route path="/privacy" render={props => (
 					<Page {...props} component={Privacy} title="Privacy Policy" />
-				)}/>
+				)} />
 				<Route path="/prince-kong" render={props => (
 					<Page {...props} component={PrinceKong} title="Prince Kong" />
-				)}/>
+				)} />
 				<Route render={props => (
 					<Page {...props} component={NotFound} title="Error 404" />
-				)}/>
+				)} />
 			</Switch>
 		</div>
 	);
