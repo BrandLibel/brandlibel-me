@@ -87,8 +87,12 @@ export class BlogPostList extends React.Component {
                 let postComponents = data.map(post => {
                     const CURRENT_SLUG = post.slug;
 
-                    let truncatedExcerpt = post.markdown.substr(0, 220);
-                    if (truncatedExcerpt.length < post.markdown.length) truncatedExcerpt += "...";
+                    let truncatedExcerpt = post.markdown.split("\n")[0];
+                    
+                    if (truncatedExcerpt.length > 220){
+                        truncatedExcerpt = truncatedExcerpt.substr(0, 220);
+                        truncatedExcerpt += "...";
+                    }
 
                     return (
                         <BlogPost
