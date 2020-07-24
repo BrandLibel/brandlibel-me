@@ -4,7 +4,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
     entry: path.join(__dirname, '/src/client/index.js'),
     output: {
-        filename: 'build.js',
+        filename: 'build.js?h=[contenthash]',
+        chunkFilename: 'build.js?h=[contenthash]',
         path: path.join(__dirname, '/dist')
     },
     module: {
