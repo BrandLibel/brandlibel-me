@@ -1,10 +1,14 @@
 'use strict';
 
-import styles from './styles/main.css';
+import styles from "./styles/main.css";
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 import Main from "./Main";
+
+import ReactGA from "react-ga";
+
+ReactGA.initialize("UA-63639646-1");
 
 global.COLORS = {
 	BLUE: "blue",
@@ -14,4 +18,4 @@ global.COLORS = {
 	CLEAR: "clear"
 };
 
-ReactDOM.render(<Main/>, document.getElementById('root'));
+ReactDOM.render(<Main/>, document.getElementById("root"));
