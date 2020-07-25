@@ -70,10 +70,20 @@ const makeNewPost = (postJson, callback) => {
     }, null, callback);
 };
 
+const editPost = (postJson, callback) => {
+    collectionPosts.updateOne(
+        {slug: postJson.slug},
+        {
+            title: postJson.newPostTitle,
+            markdown: postJson.newPostMarkdown,
+        }, null, callback
+    );
+};
+
 const deletePost = (slug, callback) => {
     collectionPosts.deleteOne({
         slug: slug,
     }, null, callback);
 };
 
-module.exports = { getPost, getAllPosts, makeNewPost, deletePost };
+module.exports = { getPost, getAllPosts, makeNewPost, editPost, deletePost };

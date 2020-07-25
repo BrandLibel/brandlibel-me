@@ -90,6 +90,19 @@ app.post('/api/newPost', jsonParser, (req, res) => {
     })
 });
 
+app.post('/api/editPost', jsonParser, (req, res) => {
+    const jsonBody = req.body;
+
+    if (!isValidPass(jsonBody.adminPassword)){
+        res.status(401).send();
+        return;
+    }
+
+    db.editPost(jsonBody, (err, result) => {
+        res.status(200).send();
+    })
+});
+
 app.delete('/api/deletePost', jsonParser, (req, res) => {
     const jsonBody = req.body;
 
