@@ -57,8 +57,8 @@ export default class PostForm extends React.Component {
         let valueMarkdown = this.state.newPostMarkdown;
 
         if (this.props.isEditing) {
-            this.props.postTitle;
-            this.props.markdown;
+            valueTitle = this.props.postTitle;
+            valueMarkdown = this.props.markdown;
         }
 
         return (
