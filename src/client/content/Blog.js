@@ -71,15 +71,9 @@ export class BlogPost extends React.Component {
         if (this.state.isEditing){
             postContent = (
                 <PostForm
-                    //N_TITLE={N_TITLE}
-                    //N_MARKDOWN={N_MARKDOWN}
-                    //F_NEW_POST={F_NEW_POST}
                     postTitle={props.title}
                     markdown={props.markdown}
                     isEditing={this.state.isEditing}
-                    //postResponseString={this.state.postResponseString}
-                    //handleChange={this.handleChange}
-                    //handleSubmit={this.handleSubmit}
                 />
             );
         }

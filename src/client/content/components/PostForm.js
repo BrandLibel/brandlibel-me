@@ -79,4 +79,3 @@ export default class PostForm extends React.Component {
         );
     }
 }
-
