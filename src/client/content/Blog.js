@@ -50,8 +50,14 @@ class AdminButtons extends React.Component {
 export class BlogPost extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { isEditing: false }
+        this.state = {
+            isEditing: false,
+            title: props.title,
+            markdown: props.markdown,
+            excerpt: props.excerpt,
+        }
         this.handleEdit = this.handleEdit.bind(this);
+        this.handlePostEdit = this.handlePostEdit.bind(this);
     }
 
     handleEdit() {
@@ -60,22 +66,31 @@ export class BlogPost extends React.Component {
         });
     }
 
+    handlePostEdit(title, markdown) {
+        this.setState({
+            title: title,
+            markdown: markdown,
+            excerpt: markdown,
+        });
+    }
+
     render() {
         const props = this.props;
 
         let postContent = (
             <>
-                <h2><NavLink to={`/blog/${props.slug}`}><span className="clearBoxLink">{props.title}</span></NavLink></h2>
-                <p>{props.excerpt}</p>
+                <h2><NavLink to={`/blog/${props.slug}`}><span className="clearBoxLink">{this.state.title}</span></NavLink></h2>
+                <p>{this.state.excerpt}</p>
             </>
         );
         if (this.state.isEditing){
             postContent = (
                 <PostForm
-                    postTitle={props.title}
-                    markdown={props.markdown}
+                    postTitle={this.state.title}
+                    markdown={this.state.markdown}
                     isEditing={this.state.isEditing}
                     slug={props.slug}
+                    extraHandleSubmit={this.handlePostEdit}
                 />
             );
         }

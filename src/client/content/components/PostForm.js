@@ -55,6 +55,7 @@ export default class PostForm extends React.Component {
         request.onreadystatechange = () => {
             if (request.readyState == 4) {
                 if (request.status == 200) {
+                    if (this.props.extraHandleSubmit) this.props.extraHandleSubmit(this.state[N_TITLE], this.state[N_MARKDOWN]);
                     if (IS_EDITING) {
                         this.setState({
                             postResponseString: "Success! Edited blog post.",
