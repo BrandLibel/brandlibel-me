@@ -6,6 +6,8 @@ import { BlogPostList } from "./Blog";
 
 import { N_PASSWORD } from "./../global/Strings";
 
+import PassContext from "./../global/PassContext";
+
 export default class Admin extends React.Component {
     constructor() {
         super();
@@ -21,7 +23,7 @@ export default class Admin extends React.Component {
     }
     render() {
         return (
-            <div>
+            <PassContext.Provider value={this.state.adminPassword}>
                 <div className="boxGrid">
                     <Box color={global.COLORS.CLEAR} wide>
                         <h1>Admin Console</h1>
@@ -34,19 +36,13 @@ export default class Admin extends React.Component {
                             value={this.state.adminPassword}
                         />
                         <h2>New Blog Post</h2>
-                        <PostForm
-                            adminPassword={this.state.adminPassword}
-                            postResponseString={this.state.postResponseString}
-                        />
+                        <PostForm />
                     </Box>
                 </div>
                 <div className="boxGrid">
-                    <BlogPostList
-                        isAdminConsole
-                        password={this.state.adminPassword}
-                    />
+                    <BlogPostList isAdminConsole />
                 </div>
-            </div>
+            </PassContext.Provider>
         );
     }
 }

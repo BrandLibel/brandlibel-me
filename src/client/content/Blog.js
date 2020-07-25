@@ -4,6 +4,7 @@ import { BoxButton } from "./components/Button";
 import PostForm from "./components/PostForm";
 import BrandSpinner from "./components/BrandSpinner";
 import { NavLink } from "react-router-dom";
+import PassContext from "./../global/PassContext";
 
 class AdminButtons extends React.Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class AdminButtons extends React.Component {
         if (this.props.isEditing) editLabel = "Cancel";
 
         return (
-            <p>
+            <>
                 <BoxButton color={global.COLORS.RED} label="Delete" clickCallback={
                     event => {
                         if (this.state.allowDelete) {
@@ -41,7 +42,7 @@ class AdminButtons extends React.Component {
                 }
                 />
                 <input type="checkbox" onChange={this.handleChange} checked={this.state.allowDelete} /> <label>Allow Delete?</label>
-            </p>
+            </>
         );
     }
 }
@@ -63,10 +64,10 @@ export class BlogPost extends React.Component {
         const props = this.props;
 
         let postContent = (
-            <div>
+            <>
                 <h2><NavLink to={`/blog/${props.slug}`}><span className="clearBoxLink">{props.title}</span></NavLink></h2>
                 <p>{props.excerpt}</p>
-            </div>
+            </>
         );
         if (this.state.isEditing){
             postContent = (
@@ -74,6 +75,7 @@ export class BlogPost extends React.Component {
                     postTitle={props.title}
                     markdown={props.markdown}
                     isEditing={this.state.isEditing}
+                    slug={props.slug}
                 />
             );
         }
@@ -95,6 +97,8 @@ export class BlogPost extends React.Component {
 }
 
 export class BlogPostList extends React.Component {
+    static contextType = PassContext;
+
     constructor(props) {
         super(props);
         this.state = {
@@ -107,7 +111,7 @@ export class BlogPostList extends React.Component {
     handleDelete(slug) {
         const json = {
             slug: slug,
-            password: this.props.password,
+            password: this.context,
         };
 
         const request = new XMLHttpRequest();
@@ -157,7 +161,7 @@ export class BlogPostList extends React.Component {
             });
     }
     render() {
-        if (this.state.isLoading) return <div style={{ width: "100%", height: "100%", backgroundColor: '#ffffff' }}><BrandSpinner /></div>;
+        if (this.state.isLoading) return <BrandSpinner />;
         return this.state.posts;
     }
 }
@@ -168,16 +172,16 @@ export default class Blog extends React.Component {
     }
     render() {
         return (
-            <div>
+            <>
                 <div className="boxGrid">
                     <Box color={global.COLORS.CLEAR} wide>
                         <h1>Blog Libel</h1>
                     </Box>
                 </div>
                 <div className="boxGrid">
-                    <BlogPostList password="" />
+                    <BlogPostList />
                 </div>
-            </div>
+            </>
         );
     }
 }

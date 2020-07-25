@@ -3,7 +3,11 @@ import { BoxButton } from "./Button";
 
 import { N_TITLE, N_MARKDOWN, F_NEW_POST, N_PASSWORD } from "./../../global/Strings";
 
+import PassContext from "./../../global/PassContext";
+
 export default class PostForm extends React.Component {
+    static contextType = PassContext;
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -22,16 +26,24 @@ export default class PostForm extends React.Component {
     }
     handleSubmit(event) {
         event.preventDefault();
-        console.log("Submitted!", this.state[N_TITLE], this.state[N_MARKDOWN]);
+
+        console.log("Submitted!", this.state[N_TITLE], this.state[N_MARKDOWN], this.context);
+
+        let apiEndpoint = "newPost";
 
         const json = {
-            [N_PASSWORD]: this.props[N_PASSWORD],
+            [N_PASSWORD]: this.context,
             [N_TITLE]: this.state[N_TITLE],
             [N_MARKDOWN]: this.state[N_MARKDOWN],
         };
 
+        if (this.props.isEditing){
+            json.slug = this.props.slug;
+            apiEndpoint = "editPost";
+        }
+
         const request = new XMLHttpRequest();
-        request.open("POST", "/api/newPost");
+        request.open("POST", `/api/${apiEndpoint}`);
         request.setRequestHeader("Content-Type", "application/json");
 
         request.send(JSON.stringify(json));
