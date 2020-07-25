@@ -10,8 +10,8 @@ const dbName = IS_PRODUCTION ? 'dbProd' : 'dbTest4';
 let db;
 let collectionPosts;
 
-mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true}, (err, client) => {
-    if (err){
+mongoClient.connect(mongoClientUrl, { useUnifiedTopology: true }, (err, client) => {
+    if (err) {
         console.log(err);
         process.exit(1);
     }
@@ -26,7 +26,7 @@ mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true}, (err, client) =>
                     console.log(err);
                 }
                 else {
-                    if (!IS_PRODUCTION){
+                    if (!IS_PRODUCTION) {
                         collection.insertMany([
                             {
                                 title: 'Test Post One',
@@ -53,7 +53,7 @@ mongoClient.connect(mongoClientUrl, {useUnifiedTopology: true}, (err, client) =>
 });
 
 const getPost = (slug, callback) => {
-    collectionPosts.findOne({slug: slug}, null, callback);
+    collectionPosts.findOne({ slug: slug }, null, callback);
 };
 
 const getAllPosts = async callback => {
@@ -72,10 +72,12 @@ const makeNewPost = (postJson, callback) => {
 
 const editPost = (postJson, callback) => {
     collectionPosts.updateOne(
-        {slug: postJson.slug},
+        { slug: postJson.slug },
         {
-            title: postJson.newPostTitle,
-            markdown: postJson.newPostMarkdown,
+            $set: {
+                title: postJson.newPostTitle,
+                markdown: postJson.newPostMarkdown,
+            }
         }, null, callback
     );
 };

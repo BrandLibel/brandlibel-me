@@ -7,7 +7,7 @@ import PassContext from "./../../global/PassContext";
 
 export default class PostForm extends React.Component {
     static contextType = PassContext;
-    
+
     constructor(props) {
         super(props);
         this.state = {
@@ -29,6 +29,8 @@ export default class PostForm extends React.Component {
 
         console.log("Submitted!", this.state[N_TITLE], this.state[N_MARKDOWN], this.context);
 
+        this.setState({ postResponseString: "", });
+
         let apiEndpoint = "newPost";
 
         const json = {
@@ -37,7 +39,9 @@ export default class PostForm extends React.Component {
             [N_MARKDOWN]: this.state[N_MARKDOWN],
         };
 
-        if (this.props.isEditing){
+        const IS_EDITING = this.props.isEditing;
+
+        if (IS_EDITING) {
             json.slug = this.props.slug;
             apiEndpoint = "editPost";
         }
@@ -51,11 +55,18 @@ export default class PostForm extends React.Component {
         request.onreadystatechange = () => {
             if (request.readyState == 4) {
                 if (request.status == 200) {
-                    this.setState({
-                        [N_TITLE]: "",
-                        [N_MARKDOWN]: "",
-                        postResponseString: "Success! Posted blog post.",
-                    });
+                    if (IS_EDITING) {
+                        this.setState({
+                            postResponseString: "Success! Edited blog post.",
+                        });
+                    }
+                    else {
+                        this.setState({
+                            [N_TITLE]: "",
+                            [N_MARKDOWN]: "",
+                            postResponseString: "Success! Posted blog post.",
+                        });
+                    }
                 }
                 else {
                     this.setState({ postResponseString: `Failure. Error ${request.status}` });

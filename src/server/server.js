@@ -13,13 +13,13 @@ const db = require('./db');
 // HTTP
 let hyperTextProtocol;
 var server;
-if (IS_PRODUCTION){
+if (IS_PRODUCTION) {
     var fs = require('fs');
     var https = require('https');
     hyperTextProtocol = https;
-    server = https.createServer({ 
+    server = https.createServer({
         key: fs.readFileSync('/etc/letsencrypt/live/brandlibel.me/privkey.pem'),
-        cert: fs.readFileSync('/etc/letsencrypt/live/brandlibel.me/fullchain.pem') 
+        cert: fs.readFileSync('/etc/letsencrypt/live/brandlibel.me/fullchain.pem')
     }, app);
 }
 else {
@@ -80,12 +80,13 @@ function isValidPass(pass) {
 app.post('/api/newPost', jsonParser, (req, res) => {
     const jsonBody = req.body;
 
-    if (!isValidPass(jsonBody.adminPassword)){
+    if (!isValidPass(jsonBody.adminPassword)) {
         res.status(401).send();
         return;
     }
 
     db.makeNewPost(jsonBody, (err, result) => {
+        if (err) console.log(err);
         res.status(200).send();
     })
 });
@@ -93,12 +94,13 @@ app.post('/api/newPost', jsonParser, (req, res) => {
 app.post('/api/editPost', jsonParser, (req, res) => {
     const jsonBody = req.body;
 
-    if (!isValidPass(jsonBody.adminPassword)){
+    if (!isValidPass(jsonBody.adminPassword)) {
         res.status(401).send();
         return;
     }
 
     db.editPost(jsonBody, (err, result) => {
+        if (err) console.log(err);
         res.status(200).send();
     })
 });
@@ -106,12 +108,13 @@ app.post('/api/editPost', jsonParser, (req, res) => {
 app.delete('/api/deletePost', jsonParser, (req, res) => {
     const jsonBody = req.body;
 
-    if (!isValidPass(jsonBody.adminPassword)){
+    if (!isValidPass(jsonBody.adminPassword)) {
         res.status(401).send();
         return;
     }
 
     db.deletePost(jsonBody.slug, (err, result) => {
+        if (err) console.log(err);
         res.status(200).send();
     })
 });
