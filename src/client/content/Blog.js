@@ -16,10 +16,13 @@ class AdminButtons extends React.Component {
         this.setState(prevState => { return { allowDelete: !prevState.allowDelete } });
     }
     render() {
+        let editLabel = "Edit";
+        if (this.props.isEditing) editLabel = "Cancel";
+
         return (
             <p>
                 <BoxButton color={global.COLORS.RED} label="Delete" clickCallback={
-                    (event) => {
+                    event => {
                         if (this.state.allowDelete) {
                             this.props.handleDelete();
                             // This is a patch for a bug where the next blog post
@@ -32,21 +35,54 @@ class AdminButtons extends React.Component {
                     }
                 }
                 />
-                <BoxButton label="Edit" />
+                <BoxButton label={editLabel} clickCallback={
+                    event => { this.props.handleEdit(); }
+                }
+                />
                 <input type="checkbox" onChange={this.handleChange} checked={this.state.allowDelete} /> <label>Allow Delete?</label>
             </p>
         );
     }
 }
 
-function BlogPost(props) {
-    return (
-        <Box color={global.COLORS.CLEAR} wide>
-            <h2><NavLink to={`/blog/${props.slug}`}><span className="clearBoxLink">{props.title}</span></NavLink></h2>
-            <p>{props.excerpt}</p>
-            {props.isAdminConsole && <AdminButtons handleDelete={props.handleDelete} />}
-        </Box>
-    );
+export class BlogPost extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { isEditing: false }
+        this.handleEdit = this.handleEdit.bind(this);
+    }
+
+    handleEdit() {
+        this.setState(prevState => {
+            return { isEditing: !prevState.isEditing };
+        });
+    }
+
+    render() {
+        const props = this.props;
+
+        let postContent = (
+            <div>
+                <h2><NavLink to={`/blog/${props.slug}`}><span className="clearBoxLink">{props.title}</span></NavLink></h2>
+                <p>{props.excerpt}</p>
+            </div>
+        );
+        if (this.state.isEditing) postContent = <p>Test replacement</p>;
+
+        return (
+            <Box color={global.COLORS.CLEAR} wide>
+                {postContent}
+                {
+                    props.isAdminConsole &&
+                    <AdminButtons
+                        handleDelete={props.handleDelete}
+                        handleEdit={this.handleEdit}
+                        isEditing={this.state.isEditing}
+                    />
+                }
+            </Box>
+        );
+    }
 }
 
 export class BlogPostList extends React.Component {
@@ -88,8 +124,8 @@ export class BlogPostList extends React.Component {
                     const CURRENT_SLUG = post.slug;
 
                     let truncatedExcerpt = post.markdown.split("\n")[0];
-                    
-                    if (truncatedExcerpt.length > 220){
+
+                    if (truncatedExcerpt.length > 220) {
                         truncatedExcerpt = truncatedExcerpt.substr(0, 220);
                         truncatedExcerpt += "...";
                     }
@@ -100,6 +136,7 @@ export class BlogPostList extends React.Component {
                             isAdminConsole={this.props.isAdminConsole}
                             slug={post.slug}
                             title={post.title}
+                            markdown={post.markdown}
                             handleDelete={() => this.handleDelete(CURRENT_SLUG)}
                         />
                     )
@@ -111,7 +148,7 @@ export class BlogPostList extends React.Component {
             });
     }
     render() {
-        if (this.state.isLoading) return <div style={{width: "100%", height:"100%", backgroundColor: '#ffffff'}}><BrandSpinner /></div>;
+        if (this.state.isLoading) return <div style={{ width: "100%", height: "100%", backgroundColor: '#ffffff' }}><BrandSpinner /></div>;
         return this.state.posts;
     }
 }
