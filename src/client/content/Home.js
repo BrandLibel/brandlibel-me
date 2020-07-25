@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from "./components/Box";
 import { BoxButtonNav, BoxButtonA } from "./components/Button";
-import genEmAddr from "../mail-gen";
+import Util from "../global/Util";
 import imgPathNinjam from "../data/img/ninjam_screenshot.png";
 import { BoxTintImage } from "./components/Image";
 
@@ -14,7 +14,7 @@ export default class Home extends React.Component {
 						<h1>Brandon Li, Full Stack Developer</h1>
 						<p>Hello there! I'm Brandon, and I create websites, mobile apps, and games.</p>
 						<BoxButtonNav to="/work" label="See all my work" />
-						<BoxButtonA label="Contact me" href={`mailto:${genEmAddr()}`} />
+						<BoxButtonA label="Contact me" href={`mailto:${Util.getEmailAddress()}`} />
 					</Box>
 				</div>
 				<div className="boxGrid">

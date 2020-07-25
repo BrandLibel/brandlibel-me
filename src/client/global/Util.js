@@ -11,6 +11,14 @@ const excerptify = (markdown, charLength) => {
     return excerpt;
 };
 
-const Util = { excerptify };
+const getEmailAddress = () => {
+    var x = "contact";
+    var y = "brand";
+    var y1 = "libel";
+    var z = ".me";
+    return `${x}@${y+y1+z}`;
+}
+
+const Util = { excerptify, getEmailAddress };
 
 export default Util;
