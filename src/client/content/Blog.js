@@ -5,6 +5,7 @@ import PostForm from "./components/PostForm";
 import BrandSpinner from "./components/BrandSpinner";
 import { NavLink } from "react-router-dom";
 import PassContext from "./../global/PassContext";
+import Util from "./../global/Util";
 
 class AdminButtons extends React.Component {
     constructor(props) {
@@ -70,7 +71,7 @@ export class BlogPost extends React.Component {
         this.setState({
             title: title,
             markdown: markdown,
-            excerpt: markdown,
+            excerpt: Util.excerptify(markdown),
         });
     }
 
@@ -151,12 +152,7 @@ export class BlogPostList extends React.Component {
                 let postComponents = data.map(post => {
                     const CURRENT_SLUG = post.slug;
 
-                    let truncatedExcerpt = post.markdown.split("\n")[0];
-
-                    if (truncatedExcerpt.length > 220) {
-                        truncatedExcerpt = truncatedExcerpt.substr(0, 220);
-                        truncatedExcerpt += "...";
-                    }
+                    let truncatedExcerpt = Util.excerptify(post.markdown);
 
                     return (
                         <BlogPost
