@@ -43,16 +43,16 @@ export default class Admin extends React.Component {
         request.send(JSON.stringify(json));
 
         request.onreadystatechange = () => {
-            if (request.readyState == 4){
+            if (request.readyState == 4) {
                 if (request.status == 200) {
                     this.setState({
                         [N_TITLE]: "",
                         [N_MARKDOWN]: "",
-                        postResponseString: "Success! Posted blog post.", 
+                        postResponseString: "Success! Posted blog post.",
                     });
                 }
                 else {
-                    this.setState({postResponseString: `Failure. Error ${request.status}`});
+                    this.setState({ postResponseString: `Failure. Error ${request.status}` });
                 }
             }
         }
@@ -73,10 +73,9 @@ export default class Admin extends React.Component {
                         />
                         <h2>New Blog Post</h2>
                         <PostForm
-                            N_PASSWORD = {N_PASSWORD}
-                            N_TITLE = {N_TITLE}
-                            N_MARKDOWN = {N_MARKDOWN}
-                            F_NEW_POST = {F_NEW_POST}
+                            N_TITLE={N_TITLE}
+                            N_MARKDOWN={N_MARKDOWN}
+                            F_NEW_POST={F_NEW_POST}
                             postTitle={this.state[N_TITLE]}
                             markdown={this.state[N_MARKDOWN]}
                             postResponseString={this.state.postResponseString}
@@ -86,7 +85,10 @@ export default class Admin extends React.Component {
                     </Box>
                 </div>
                 <div className="boxGrid">
-                    <BlogPostList isAdminConsole password={this.state[N_PASSWORD]}/>
+                    <BlogPostList
+                        isAdminConsole
+                        password={this.state[N_PASSWORD]}
+                    />
                 </div>
             </div>
         );
