@@ -1,6 +1,7 @@
 import React from "react";
 import Box from "./components/Box";
 import { BoxButton } from "./components/Button";
+import PostForm from "./components/PostForm";
 import BrandSpinner from "./components/BrandSpinner";
 import { NavLink } from "react-router-dom";
 
@@ -67,7 +68,21 @@ export class BlogPost extends React.Component {
                 <p>{props.excerpt}</p>
             </div>
         );
-        if (this.state.isEditing) postContent = <p>Test replacement</p>;
+        if (this.state.isEditing){
+            postContent = (
+                <PostForm
+                    //N_TITLE={N_TITLE}
+                    //N_MARKDOWN={N_MARKDOWN}
+                    //F_NEW_POST={F_NEW_POST}
+                    postTitle={props.title}
+                    markdown={props.markdown}
+                    isEditing={this.state.isEditing}
+                    //postResponseString={this.state.postResponseString}
+                    //handleChange={this.handleChange}
+                    //handleSubmit={this.handleSubmit}
+                />
+            );
+        }
 
         return (
             <Box color={global.COLORS.CLEAR} wide>
