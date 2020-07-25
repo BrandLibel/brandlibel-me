@@ -15,7 +15,8 @@ export default function Box(props) {
 			`${styles.box}
 			${(props.color || global.COLORS.BLUE)}Box
 			${gridSizeStyle}
-			${spacingStyle}`
+			${spacingStyle}
+			wordBreakBox`
 		}>
 			{props.children}
 		</div>

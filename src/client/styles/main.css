@@ -245,6 +245,10 @@ input[type=text], input[type=password], textarea {
     
 }
 
+.wordBreakBox {
+    word-break: break-word;
+}
+
 .boxWide {
     grid-column: 1 / 3;
 }

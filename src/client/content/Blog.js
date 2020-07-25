@@ -56,7 +56,7 @@ export class BlogPost extends React.Component {
             title: props.title,
             markdown: props.markdown,
             excerpt: props.excerpt,
-        }
+        };
         this.handleEdit = this.handleEdit.bind(this);
         this.handlePostEdit = this.handlePostEdit.bind(this);
     }
