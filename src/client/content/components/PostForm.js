@@ -7,8 +7,8 @@ export default class PostForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            [N_TITLE]: "",
-            [N_MARKDOWN]: "",
+            [N_TITLE]: props.postTitle || "",
+            [N_MARKDOWN]: props.markdown || "",
             postResponseString: "",
         };
         this.handleChange = this.handleChange.bind(this);
@@ -53,14 +53,6 @@ export default class PostForm extends React.Component {
     }
 
     render() {
-        let valueTitle = this.state.newPostTitle;
-        let valueMarkdown = this.state.newPostMarkdown;
-
-        if (this.props.isEditing) {
-            valueTitle = this.props.postTitle;
-            valueMarkdown = this.props.markdown;
-        }
-
         return (
             <form name={F_NEW_POST} onSubmit={this.handleSubmit}>
                 <input
@@ -69,7 +61,7 @@ export default class PostForm extends React.Component {
                     type="text"
                     required
                     onChange={this.handleChange}
-                    value={valueTitle}
+                    value={this.state.newPostTitle}
                 />
                 <br />
                 <textarea
@@ -78,7 +70,7 @@ export default class PostForm extends React.Component {
                     placeholder="Markdown"
                     required
                     onChange={this.handleChange}
-                    value={valueMarkdown}
+                    value={this.state.newPostMarkdown}
                 />
                 <br />
                 <p>{this.state.postResponseString}</p>
