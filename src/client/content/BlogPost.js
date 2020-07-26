@@ -33,14 +33,12 @@ export default class BlogPost extends React.Component {
         if (this.state.isLoading) return <BrandSpinner />;
 
         return (
-            <div>
-                <div className="boxGrid">
-                    <Box color={global.COLORS.CLEAR} wide>
-                        <h1>{this.state.title}</h1>
-                        <p>Published {this.state.createdOn}</p>
-                        <ReactMarkdown source={this.state.markdown} />
-                    </Box>
-                </div>
+            <div className="boxGrid">
+                <Box color={global.COLORS.CLEAR} wide>
+                    <h1>{this.state.title}</h1>
+                    <p>Published {this.state.createdOn}</p>
+                    <ReactMarkdown source={this.state.markdown} />
+                </Box>
             </div>
         );
     }
