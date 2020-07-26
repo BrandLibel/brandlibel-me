@@ -162,6 +162,7 @@ ul.textList {
     color: white;
     display: inline-block;
     text-align: center;
+    font-family: azo-sans-web;
     font-weight: medium;
     margin-right: 1rem;
     margin-bottom: 1rem;
@@ -245,6 +246,10 @@ input[type=text], input[type=password], textarea {
     
 }
 
+.wordBreakBox {
+    word-break: break-word;
+}
+
 .boxWide {
     grid-column: 1 / 3;
 }
@@ -256,7 +261,6 @@ input[type=text], input[type=password], textarea {
     background-color: var(--color-box-blue);
 }
 .blueBoxButton {
-    font-family: azo-sans-web;
     background-color: var(--color-box-blue-dark);
 }
 .blueBoxButton:hover {
