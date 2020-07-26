@@ -127,7 +127,7 @@ export class BlogPostList extends React.Component {
     handleDelete(slug) {
         const json = {
             slug: slug,
-            password: this.context,
+            adminPassword: this.context,
         };
 
         const request = new XMLHttpRequest();
@@ -143,9 +143,11 @@ export class BlogPostList extends React.Component {
     }
     componentDidMount() {
         this.refreshAllBlogPosts();
-        this.setState({ isLoading: true });
     }
     refreshAllBlogPosts() {
+        // For some reason, displaying the loading spinner is required
+        // before the delete function visually removes the component.
+        this.setState({ isLoading: true });
         fetch("/api/blog/all")
             .then(response => response.json())
             .then(data => {
