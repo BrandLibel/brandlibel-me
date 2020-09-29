@@ -17,7 +17,7 @@
 		"date": "July 2020",
 		"dateCode": "2020-07",
 		"description": "My personal website (you're on it) uses React and is a hybrid single-page / multi-page application.",
-		"tech": ["React.js", "Node.js", "Express.js", "Webpack"],
+		"tech": ["React.js", "Node.js", "MongoDB", "Express.js", "Webpack"],
 		"links": ["/", "https://github.com/brandLibel/brandlibel-me"],
 	},
 	{
