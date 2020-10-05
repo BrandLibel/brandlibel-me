@@ -29,6 +29,8 @@ else {
 
 const filePath = path.join(__dirname, '/../../dist');
 
+app.use(require('prerender-node').set('prerenderToken', 'jdwZTlKJ07N1BfWoxDJ9'));
+
 app.use(express.static(filePath), (req, res, next) => {
     next();
 });
