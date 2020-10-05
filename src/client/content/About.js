@@ -30,7 +30,7 @@ export default class About extends React.Component {
 
 					<Box color={global.COLORS.CLEAR} left>
 						<p>I enjoy building and shipping great products and writing quality code. I am comfortable with all stages of development, from design to release.</p>
-						<p>My most recent employment was at Bundil as an Android Developer. I worked on developing the core functionality of the Android app.</p>
+						<p>I am currently a full-time Software Engineer at <a className="clearBoxLink" href="https://joinmonument.com">Monument</a>.</p>
 					</Box>
 
 					<img className="boxImageFree boxRight"
