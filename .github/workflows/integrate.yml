@@ -13,7 +13,7 @@ jobs:
     - uses: actions/setup-node@v2.4.1
       with:
         node-version: 12
-    - run: yarn install
+    - run: yarn install --production
     - run: yarn test
     - name: Build and run production
       run: yarn prod
