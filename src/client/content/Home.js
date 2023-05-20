@@ -25,9 +25,7 @@ export default class Home extends React.Component {
 						<p>Play as a guest, or create an account to have your stats tracked!</p>
 						<BoxButtonA label="Play Ninjam.io" color={global.COLORS.ORANGE} href="https://ninjam.io" target="_blank" />
 					</Box>
-					<div className="boxImageContainer boxRight">
-						<BoxTintImage href="https://ninjam.io" src={imgPathNinjam} />
-					</div>
+					<BoxTintImage href="https://ninjam.io" src={imgPathNinjam} />
 				</div>
 			</div>
 		);
