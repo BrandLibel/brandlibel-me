@@ -29,15 +29,6 @@ else {
 
 const filePath = path.join(__dirname, '/../../dist');
 
-// Might be easier to whitelist the valid pages instead.
-app.use(require('prerender-node')
-    .set('prerenderToken', 'jdwZTlKJ07N1BfWoxDJ9'))
-    .blacklisted([
-        '\/vendor.*', '\/test.*', '\/vestibular.*', '\/v2.*', '\/v1.*',
-        '\/testing.*', '\/ticket.*', '\/reports.*', '\/pos.*', '\/portal.*',
-        '\/pms.*', '\/pgd.*', '\/pcc.*', '\/payments.*', '\/p.*',
-    ]);
-
 app.use(express.static(filePath), (req, res, next) => {
     next();
 });
