@@ -18,8 +18,8 @@ if (IS_PRODUCTION) {
     var https = require('https');
     hyperTextProtocol = https;
     server = https.createServer({
-        key: fs.readFileSync('/etc/letsencrypt/live/brandlibel.me/privkey.pem'),
-        cert: fs.readFileSync('/etc/letsencrypt/live/brandlibel.me/fullchain.pem')
+        key: fs.readFileSync('/etc/letsencrypt/live/brandlibel.me-0001/privkey.pem'),
+        cert: fs.readFileSync('/etc/letsencrypt/live/brandlibel.me-0001/fullchain.pem')
     }, app);
 }
 else {
